@@ -1,9 +1,12 @@
+package Model;
+
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.image.ImageView;
 
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
-public class Obstaculo {
+public class Obstaculo extends ImageView{
 
     SimpleIntegerProperty posX;
     SimpleIntegerProperty posY;
