@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="mainAnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="vbox" layoutX="271.0" layoutY="231.0" prefHeight="211.0" prefWidth="258.0" spacing="20.0">
+        <children>
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="47.0" prefWidth="256.0" text="Play">
+               <font>
+                  <Font name="Symbol" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="scoresButton" mnemonicParsing="false" onAction="#scoresButtonPressed" prefHeight="47.0" prefWidth="256.0" text="Scores">
+               <font>
+                  <Font name="Symbol" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="47.0" prefWidth="256.0" text="Exit">
+               <font>
+                  <Font name="Symbol" size="24.0" />
+               </font>
+            </Button>
+        </children>
+      </VBox>
+      <Text fx:id="titleText" fill="RED" layoutX="156.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DINOGAME" wrappingWidth="488.13671875">
+         <font>
+            <Font name="Symbol" size="96.0" />
+         </font>
+      </Text>
+      <Text fx:id="copyrightText" fill="RED" layoutX="308.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© MORDORSOFT 2016" wrappingWidth="184.13671875">
+         <font>
+            <Font name="Symbol" size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
