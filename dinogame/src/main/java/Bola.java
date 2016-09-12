@@ -12,7 +12,7 @@ public class Bola {
         y=10;
     }
 
-    public boolean MovimientoBola(int x1,int parametroSalto){
+    public boolean MoverBola(int x1,int parametroSalto){
         int i=1;
         for(i=1;i<=10;i++){
             x = x1;
