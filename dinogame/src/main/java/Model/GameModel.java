@@ -10,7 +10,14 @@ import javafx.collections.ObservableList;
  */
 public class GameModel {
     Jugador jugador;
+
     ObservableList<Obstaculo> obstaculos = new SimpleListProperty<>();
 
+    public ObservableList<Obstaculo> getObstaculos() {
+        return obstaculos;
+    }
 
+    public Jugador getJugador() {
+        return jugador;
+    }
 }

@@ -11,7 +11,7 @@ import javafx.animation.AnimationTimer;
 public class ControladorJuego {
 
     GameModel modelo = new GameModel();
-    VistaJuego vistaJuego = new VistaJuego();
+    VistaJuego vistaJuego;
 
 
     SistemaColisiones sistemaColisiones;
@@ -19,8 +19,17 @@ public class ControladorJuego {
     CreadorObstaculos creadorObstaculos;
     MovimientoObstaculos movimientoObstaculos;
     ControlJugador controlJugador;
-    public void initControlador() {
 
+    public void initControlador(VistaJuego vistaJuego) {
+        sistemaColisiones = new SistemaColisiones(modelo.getObstaculos(), modelo.getJugador());
+        movimientoFondo = new MovimientoFondo();
+        creadorObstaculos = new CreadorObstaculos();
+        movimientoObstaculos = new MovimientoObstaculos(modelo.getObstaculos(), vistaJuego.getCapaObstaculos());
+        controlJugador = new ControlJugador();
+
+        movimientoFondo.initFondo(vistaJuego.getCapaFondo());
+        vistaJuego.mostrarJuego();
+        timer.start();
     }
 
 
@@ -28,7 +37,7 @@ public class ControladorJuego {
         @Override
         public void handle(long now) {
             controlJugador.recibirInteraccion();
-            movimientoFondo.moverFondo();
+            movimientoFondo.moverFondo(now);
             creadorObstaculos.crearObstaculos();
             movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {

@@ -1,5 +1,6 @@
 package View;
 
+import Model.Principal;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -10,18 +11,30 @@ import javafx.scene.layout.StackPane;
 public class VistaJuego {
 
     StackPane stack = new StackPane();
+
     AnchorPane capaFondo = new AnchorPane();
+
     AnchorPane capaObstaculos = new AnchorPane();
+
     AnchorPane capaJugador = new AnchorPane();
     AnchorPane capaMenu = new AnchorPane();
 
+    public void initVistaJuego() {
+        stack.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
+        capaFondo.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
+        capaObstaculos.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
+        capaJugador.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
+        capaMenu.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
+        capaObstaculos.setStyle("-fx-background-color: transparent");
+        capaJugador.setStyle("-fx-background-color: transparent");
+
+    }
 
     public void mostrarMenu() {
         stack.getChildren().remove(capaFondo);
         stack.getChildren().remove(capaObstaculos);
         stack.getChildren().remove(capaJugador);
     }
-
     public void mostrarJuego() {
         stack.getChildren().add(capaFondo);
         stack.getChildren().add(capaObstaculos);
@@ -31,5 +44,14 @@ public class VistaJuego {
 
     public Parent getRootPane() {
         return stack;
+    }
+
+    public AnchorPane getCapaFondo() {
+        return capaFondo;
+    }
+
+
+    public AnchorPane getCapaObstaculos() {
+        return capaObstaculos;
     }
 }
