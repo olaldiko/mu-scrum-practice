@@ -1,9 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+}
 group 'mu-scrum-practice'
 version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
 sourceCompatibility = 1.8
+version = 2.0
+mainClassName = "Model.Principal"
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'DinoGame',
+                'Implementation-Version': 0.1
+    }
+}
 
 repositories {
     mavenCentral()
