@@ -8,24 +8,25 @@ import javafx.animation.AnimationTimer;
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
-public class ControladorJuego {
+class ControladorJuego {
 
-    GameModel modelo = new GameModel();
+    private final GameModel modelo = new GameModel();
     VistaJuego vistaJuego;
 
 
-    SistemaColisiones sistemaColisiones;
-    MovimientoFondo movimientoFondo;
-    CreadorObstaculos creadorObstaculos;
-    MovimientoObstaculos movimientoObstaculos;
-    ControlJugador controlJugador;
+    private SistemaColisiones sistemaColisiones;
+    private MovimientoFondo movimientoFondo;
+    private CreadorObstaculos creadorObstaculos;
+    private MovimientoObstaculos movimientoObstaculos;
+    private ControlJugador controlJugador;
 
     public void initControlador(VistaJuego vistaJuego) {
         sistemaColisiones = new SistemaColisiones(modelo.getObstaculos(), modelo.getJugador());
         movimientoFondo = new MovimientoFondo();
-        creadorObstaculos = new CreadorObstaculos();
+        creadorObstaculos = new CreadorObstaculos(modelo.getObstaculos());
         movimientoObstaculos = new MovimientoObstaculos(modelo.getObstaculos(), vistaJuego.getCapaObstaculos());
         controlJugador = new ControlJugador();
+        controlJugador.initControlJugador(modelo.getJugador(), vistaJuego.getCapaJugador());
 
         movimientoFondo.initFondo(vistaJuego.getCapaFondo());
         vistaJuego.mostrarJuego();
@@ -33,7 +34,7 @@ public class ControladorJuego {
     }
 
 
-    AnimationTimer timer = new AnimationTimer() {
+    private final AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long now) {
             controlJugador.recibirInteraccion();

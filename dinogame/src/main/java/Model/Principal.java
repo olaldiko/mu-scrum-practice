@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class Principal extends Application{
     public final static int WIDTH = 800;
     public final static int HEIGHT = 600;
-    ControladorPrincipal controller = new ControladorPrincipal();
+    private final ControladorPrincipal controller = new ControladorPrincipal();
 
     public static void main(String[] args) {
         launch(args);
@@ -23,7 +23,7 @@ public class Principal extends Application{
         primaryStage.setHeight(HEIGHT);
         primaryStage.setScene(scene);
         controller.initControlador();
-        controller.mostrarJuego();
+        controller.mostrarMenu();
         primaryStage.show();
 
     }

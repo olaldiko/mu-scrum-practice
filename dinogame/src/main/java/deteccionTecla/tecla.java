@@ -109,7 +109,8 @@ public final class tecla extends Application {
             keyNode.setOnKeyReleased(keyEventHandler);
         }
     }
-    public static void realizarMovimiento(){
+
+    private static void realizarMovimiento() {
         float y = 0;
         for (float i = 1; i <= 30; i++) {
             y = y + (150 * (1 / i));

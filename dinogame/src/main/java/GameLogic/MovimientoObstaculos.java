@@ -8,14 +8,14 @@ import javafx.scene.layout.AnchorPane;
  * Created by Gorka Olalde on 12/9/16.
  */
 public class MovimientoObstaculos {
-    ObservableList<Obstaculo> listaObstaculos;
-    AnchorPane capaObstaculos;
+    private ObservableList<Obstaculo> listaObstaculos;
+    private AnchorPane capaObstaculos;
 
     public MovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
         initMovimientoObstaculos(listaObstaculos, capaObstaculos);
     }
 
-    public void initMovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
+    private void initMovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
         this.listaObstaculos = listaObstaculos;
         this.capaObstaculos = capaObstaculos;
     }

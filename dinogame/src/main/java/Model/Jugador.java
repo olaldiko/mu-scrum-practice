@@ -1,6 +1,5 @@
 package Model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.ImageView;
 
 /**

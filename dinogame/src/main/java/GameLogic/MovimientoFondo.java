@@ -14,17 +14,18 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MovimientoFondo {
 
-    AnchorPane capaFondo;
+    private AnchorPane capaFondo;
     ObservableList<ImageView> objetosFondo = new SimpleListProperty<>();
-    Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString());
+    private final Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString());
     final int MAX_CLOUDS = 10;
-    final int MAX_HEIGHT = 200;
-    final int CLOUD_SIZE = 50;
-    final int SPEED = 10;
+    private final int MAX_HEIGHT = 200;
+    private final int CLOUD_SIZE = 50;
+    private final int SPEED = 5;
 
     public void initFondo(AnchorPane capaFondo) {
         this.capaFondo = capaFondo;
         cargarEstilosFondo();
+        cloudCreator();
     }
 
     private void cargarEstilosFondo() {
@@ -32,19 +33,18 @@ public class MovimientoFondo {
     }
 
     private void cloudCreator() {
-        Platform.runLater(() -> {
-            ImageView cloudView = new ImageView(cloud);
-            capaFondo.getChildren().add(cloudView);
-            cloudView.setLayoutX(Principal.WIDTH + CLOUD_SIZE);
-            cloudView.setLayoutY(Math.random() * MAX_HEIGHT);
-            cloudView.setFitHeight(10);
-            cloudView.setFitWidth(20);
-        });
+        ImageView cloudView = new ImageView(cloud);
+        cloudView.setLayoutX(Principal.WIDTH + CLOUD_SIZE);
+        cloudView.setLayoutY(Math.random() * MAX_HEIGHT);
+        cloudView.setFitHeight(20);
+        cloudView.setFitWidth(40);
+        cloudView.setCache(true);
+        Platform.runLater(() -> capaFondo.getChildren().add(cloudView));
 
     }
 
     public void moverFondo(long now) {
-        if (now % 10 == 0) {
+        if (now % 50 == 0 && capaFondo.getChildren().size() < 10) {
             cloudCreator();
         }
         for (Node p : capaFondo.getChildren()) {

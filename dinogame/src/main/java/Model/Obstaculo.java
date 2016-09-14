@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
  */
 public class Obstaculo extends ImageView{
 
-    SimpleIntegerProperty posX;
-    SimpleIntegerProperty posY;
+    private SimpleIntegerProperty posX;
+    private SimpleIntegerProperty posY;
 
 
     public int getPosX() {

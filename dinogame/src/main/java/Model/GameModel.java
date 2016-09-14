@@ -9,9 +9,9 @@ import javafx.collections.ObservableList;
  * Created by Gorka Olalde on 12/9/16.
  */
 public class GameModel {
-    Jugador jugador;
+    private final Jugador jugador = new Jugador();
 
-    ObservableList<Obstaculo> obstaculos = new SimpleListProperty<>();
+    private final ObservableList<Obstaculo> obstaculos = new SimpleListProperty<>();
 
     public ObservableList<Obstaculo> getObstaculos() {
         return obstaculos;

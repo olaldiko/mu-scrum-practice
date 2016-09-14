@@ -10,10 +10,13 @@ import javafx.scene.text.Text;
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
-public class ControladorMenu {
+class ControladorMenu {
+
+    private ControladorPrincipal controller;
 
     @FXML
     private AnchorPane mainAnchorPane;
+
     @FXML
     private VBox vbox;
     @FXML
@@ -26,7 +29,6 @@ public class ControladorMenu {
     private Text titleText;
     @FXML
     private Text copyrightText;
-
     @FXML
     void exitButtonPressed(ActionEvent event) {
 
@@ -34,12 +36,16 @@ public class ControladorMenu {
 
     @FXML
     void playButtonPressed(ActionEvent event) {
-
+        controller.mostrarJuego();
     }
 
     @FXML
     void scoresButtonPressed(ActionEvent event) {
 
+    }
+
+    public void setController(ControladorPrincipal controller) {
+        this.controller = controller;
     }
 
 }
