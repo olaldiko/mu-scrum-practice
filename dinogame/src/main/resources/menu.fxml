@@ -6,7 +6,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane fx:id="mainAnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="vbox" layoutX="271.0" layoutY="231.0" prefHeight="211.0" prefWidth="258.0" spacing="20.0">
@@ -28,12 +27,12 @@
             </Button>
         </children>
       </VBox>
-      <Text fx:id="titleText" fill="RED" layoutX="156.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DINOGAME" wrappingWidth="488.13671875">
+      <Text fx:id="titleText" fill="RED" layoutX="152.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DINOGAME" wrappingWidth="539.13671875">
          <font>
             <Font name="Symbol" size="96.0" />
          </font>
       </Text>
-      <Text fx:id="copyrightText" fill="RED" layoutX="308.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© MORDORSOFT 2016" wrappingWidth="184.13671875">
+      <Text fx:id="copyrightText" fill="RED" layoutX="306.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© MORDORSOFT 2016" wrappingWidth="210.13671875">
          <font>
             <Font name="Symbol" size="18.0" />
          </font>
