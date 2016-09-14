@@ -7,24 +7,22 @@ import Model.Jugador;
  */
 public class ControlJugador {
     Jugador jugador;
-    static float contador;
-    static float contador1;
-    static float posicionY;
+    static float contadorSup;
+    static float contadorInf;
 
     public void recibirInteraccion() {
-
-        if(contador<=30) {
-            posicionY = posicionY + (150 * (1 / contador));
-            contador++;
-            contador1++;
-        }else if(contador<=60) {
-            posicionY = posicionY - (150 * (1 / contador1));
-            contador1--;
-            contador++;
+        if(contadorSup<=30) {
+            jugador.setLayoutY(jugador.getLayoutY() + (150 * (1 / contadorSup)));
+            contadorSup++;
+            contadorInf++;
+        }else if(contadorSup<=60) {
+            jugador.setLayoutY(jugador.getLayoutY() - (150 * (1 / contadorSup)));
+            contadorInf--;
+            contadorSup++;
         }
-        if(contador==60) {
-            contador = 0;
-            contador1 = 0;
+        if(contadorSup==60) {
+            contadorSup = 0;
+            contadorInf = 0;
         }
     }
 }
