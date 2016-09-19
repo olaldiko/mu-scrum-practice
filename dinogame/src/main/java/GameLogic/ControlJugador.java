@@ -18,7 +18,7 @@ public class ControlJugador {
     private final int YPOS = 400;
     private final Image bola = new Image(Principal.class.getResource("/bola.png").toString());
     private AnchorPane capaJugador;
-
+    private GameSound gameSound = GameSound.getInstance();
 
     public void initControlJugador(Jugador jugador, AnchorPane capaJugador) {
         this.capaJugador = capaJugador;
@@ -37,6 +37,7 @@ public class ControlJugador {
         this.jugador.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 animacion = true;
+                gameSound.playJumpSound();
             }
         });
     }

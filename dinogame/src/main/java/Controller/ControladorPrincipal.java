@@ -1,5 +1,6 @@
 package Controller;
 
+import GameLogic.GameSound;
 import Model.Principal;
 import View.VistaJuego;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ public class ControladorPrincipal {
 
     private final ControladorMenu controladorMenu = new ControladorMenu();
     private final ControladorJuego controladorJuego = new ControladorJuego();
-
+    private GameSound gameSound = GameSound.getInstance();
 
     public VistaJuego getVistaJuego() {
         return vistaJuego;
@@ -36,6 +37,7 @@ public class ControladorPrincipal {
         try {
             vistaJuego.setCapaMenu(loader.load());
             controladorMenu.setController(this);
+            gameSound.playMenuMusic();
         } catch (IOException e) {
             e.printStackTrace();
         }

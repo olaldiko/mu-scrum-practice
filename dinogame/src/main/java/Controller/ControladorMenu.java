@@ -1,5 +1,6 @@
 package Controller;
 
+import GameLogic.GameSound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,8 @@ import javafx.scene.text.Text;
 class ControladorMenu {
 
     private ControladorPrincipal controller;
+
+    private GameSound gameSound = GameSound.getInstance();
 
     @FXML
     private AnchorPane mainAnchorPane;
@@ -36,6 +39,7 @@ class ControladorMenu {
 
     @FXML
     void playButtonPressed(ActionEvent event) {
+        gameSound.stopMenuMusic();
         controller.mostrarJuego();
     }
 

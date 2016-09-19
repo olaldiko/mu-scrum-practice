@@ -16,7 +16,7 @@ public class MovimientoFondo {
 
     private AnchorPane capaFondo;
     ObservableList<ImageView> objetosFondo = new SimpleListProperty<>();
-    private final Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString());
+    private final Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString(), true);
     final int MAX_CLOUDS = 10;
     private final int MAX_HEIGHT = 200;
     private final int CLOUD_SIZE = 50;
@@ -40,6 +40,7 @@ public class MovimientoFondo {
         cloudView.setFitWidth(40);
         cloudView.setCache(true);
         Platform.runLater(() -> capaFondo.getChildren().add(cloudView));
+
 
     }
 
