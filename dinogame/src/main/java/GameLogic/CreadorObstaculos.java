@@ -20,17 +20,16 @@ public class CreadorObstaculos {
 
     public CreadorObstaculos(ObservableList<Obstaculo> listaObstaculos) {
         initCreadorObstaculos(listaObstaculos);
+        cantidad = 5;
+        rand = new Random();
+        contador = 0;
+        posibleNuevo=false;
     }
 
     private void initCreadorObstaculos(ObservableList<Obstaculo> listaObstaculos) {
         this.listaObstaculos = listaObstaculos;
     }
-    public CreadorObstaculos() {
-            cantidad = 5;
-            rand = new Random();
-            contador = 0;
-            posibleNuevo=false;
-    }
+
     public boolean crearObstaculo() {
         if(posibleNuevo) {
             if (rand.nextBoolean() != false) {
