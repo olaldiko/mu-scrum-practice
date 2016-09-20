@@ -1,5 +1,6 @@
 package GameLogic;
 
+import Model.GameModel;
 import Model.Obstaculo;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
@@ -10,7 +11,8 @@ import javafx.scene.layout.AnchorPane;
 public class MovimientoObstaculos {
     private ObservableList<Obstaculo> listaObstaculos;
     private AnchorPane capaObstaculos;
-    int nivel;
+    long nivel;
+    GameModel model;
 
     public MovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
         initMovimientoObstaculos(listaObstaculos, capaObstaculos);
@@ -22,14 +24,11 @@ public class MovimientoObstaculos {
         this.capaObstaculos = capaObstaculos;
     }
 
-    public void setNivel(int nivel){
-        this.nivel=nivel;
-    }
     public void moverObstaculos() {
+        nivel=model.getElapsedTimeProperty();
         for(Obstaculo obs:listaObstaculos){
-            obs.setLayoutX(obs.getLayoutX() - (nivel * 2));
+            obs.setLayoutX(obs.getLayoutX() - nivel/2000);
             if(obs.getLayoutX()<680){
-
                 listaObstaculos.remove(obs);
             }
         }
