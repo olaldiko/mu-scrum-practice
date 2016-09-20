@@ -12,7 +12,7 @@ class ControladorJuego {
 
     private final GameModel modelo = new GameModel();
     VistaJuego vistaJuego;
-
+    GameSound gameSound = GameSound.getInstance();
 
     private SistemaColisiones sistemaColisiones;
     private MovimientoFondo movimientoFondo;
@@ -30,11 +30,13 @@ class ControladorJuego {
 
         movimientoFondo.initFondo(vistaJuego.getCapaFondo());
         vistaJuego.mostrarJuego();
+        gameSound.playGameMusic();
         timer.start();
     }
 
 
     private final AnimationTimer timer = new AnimationTimer() {
+        double playRate = 1.0;
         @Override
         public void handle(long now) {
             controlJugador.recibirInteraccion();
