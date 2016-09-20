@@ -41,7 +41,7 @@ class ControladorJuego {
         public void handle(long now) {
             controlJugador.recibirInteraccion();
             movimientoFondo.moverFondo(now);
-            creadorObstaculos.crearObstaculos();
+            creadorObstaculos.crearObstaculo();
             movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {
                 //Mostrar fin del juego
