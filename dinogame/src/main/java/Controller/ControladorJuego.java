@@ -29,9 +29,11 @@ class ControladorJuego {
         controlJugador.initControlJugador(modelo.getJugador(), vistaJuego.getCapaJugador());
 
         movimientoFondo.initFondo(vistaJuego.getCapaFondo());
+        movimientoFondo.startAnimation();
         vistaJuego.mostrarJuego();
         gameSound.playGameMusic();
         timer.start();
+        movimientoFondo.changeWallpaper();
     }
 
 
@@ -40,9 +42,8 @@ class ControladorJuego {
         @Override
         public void handle(long now) {
             controlJugador.recibirInteraccion();
-            movimientoFondo.moverFondo(now);
             creadorObstaculos.crearObstaculo();
-            movimientoObstaculos.moverObstaculos();
+            //        movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {
                 //Mostrar fin del juego
             }
