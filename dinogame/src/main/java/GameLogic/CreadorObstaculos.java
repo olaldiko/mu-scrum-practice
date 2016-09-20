@@ -25,9 +25,6 @@ public class CreadorObstaculos {
     private void initCreadorObstaculos(ObservableList<Obstaculo> listaObstaculos) {
         this.listaObstaculos = listaObstaculos;
     }
-    public void crearObstaculos() {
-
-    }
     public CreadorObstaculos() {
             cantidad = 5;
             rand = new Random();
