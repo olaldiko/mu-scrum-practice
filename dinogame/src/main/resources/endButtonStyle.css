@@ -1,0 +1,27 @@
+#retro {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #5ebc00 0%, #468700 100%),
+            #5ebc00,
+            #82ff00,
+            radial-gradient(center 50% 50%, radius 100%, #82ff00, #82ff00);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+}
+#retro:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #5ebc00 0%, #468700 100%),
+            #5ebc00,
+            #82ff00,
+            radial-gradient(center 50% 50%, radius 100%, #a8ff00, #82ff00);
+}
+#retro:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#retro Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #5ebc00, 0,0,0,2 );
+}
