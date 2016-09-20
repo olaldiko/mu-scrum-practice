@@ -50,8 +50,8 @@ public class GameModel {
                         .add(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER)));
     }
 
-    public long getElapsedTimeProperty() {
-        return elapsedTimeProperty.get();
+    public SimpleLongProperty elapsedTimeProperty() {
+        return elapsedTimeProperty;
     }
 
     public void resetScore() {
