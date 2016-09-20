@@ -35,6 +35,7 @@ public class CreadorObstaculos {
             if (rand.nextBoolean() != false) {
                 if (contador < cantidad) {
                     contador++;
+                    listaObstaculos.add(new Obstaculo());
                     posibleNuevo=false;
                     return true;
                 }
