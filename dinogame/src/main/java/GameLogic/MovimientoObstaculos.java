@@ -10,9 +10,11 @@ import javafx.scene.layout.AnchorPane;
 public class MovimientoObstaculos {
     private ObservableList<Obstaculo> listaObstaculos;
     private AnchorPane capaObstaculos;
+    int nivel;
 
     public MovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
         initMovimientoObstaculos(listaObstaculos, capaObstaculos);
+        nivel=0;
     }
 
     private void initMovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
@@ -20,7 +22,16 @@ public class MovimientoObstaculos {
         this.capaObstaculos = capaObstaculos;
     }
 
+    public void setNivel(int nivel){
+        this.nivel=nivel;
+    }
     public void moverObstaculos() {
+        for(Obstaculo obs:listaObstaculos){
+            obs.setLayoutX(obs.getLayoutX() - (nivel * 2));
+            if(obs.getLayoutX()<680){
 
+                listaObstaculos.remove(obs);
+            }
+        }
     }
 }
