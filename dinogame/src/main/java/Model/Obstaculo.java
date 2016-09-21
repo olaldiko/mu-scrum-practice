@@ -1,6 +1,7 @@
 package Model;
 
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -8,32 +9,10 @@ import javafx.scene.image.ImageView;
  */
 public class Obstaculo extends ImageView{
 
-    private SimpleIntegerProperty posX;
-    private SimpleIntegerProperty posY;
-
-
-    public int getPosX() {
-        return posX.get();
-    }
-
-    public SimpleIntegerProperty posXProperty() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX.set(posX);
-    }
-
-    public int getPosY() {
-        return posY.get();
-    }
-
-    public SimpleIntegerProperty posYProperty() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY.set(posY);
+    public Obstaculo() {
+        Image image = new Image(Principal.class.getResource("/Asteroide.png").toString());
+        this.setImage(image);
+        this.setCache(true);
     }
 
 

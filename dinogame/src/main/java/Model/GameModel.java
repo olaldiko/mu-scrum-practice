@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Duration;
 
@@ -22,7 +23,7 @@ public class GameModel {
 
     private final Jugador jugador = new Jugador();
 
-    private final ObservableList<Obstaculo> obstaculos = new SimpleListProperty<>();
+    private final ObservableList<Obstaculo> obstaculos = FXCollections.observableArrayList();
 
     private SimpleLongProperty elapsedTimeProperty = new SimpleLongProperty();
 

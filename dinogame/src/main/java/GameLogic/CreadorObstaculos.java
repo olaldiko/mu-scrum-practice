@@ -1,7 +1,10 @@
 package GameLogic;
 
 import Model.Obstaculo;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Random;
 
@@ -16,27 +19,32 @@ public class CreadorObstaculos {
     int cantidad;
     int contador;
     boolean posibleNuevo;
-    private ObservableList<Obstaculo> listaObstaculos;
+    private ObservableList<Node> listaObstaculos;
 
-    public CreadorObstaculos(ObservableList<Obstaculo> listaObstaculos) {
-        initCreadorObstaculos(listaObstaculos);
-        cantidad = 5;
+    public CreadorObstaculos(AnchorPane capaObstaculos) {
+        initCreadorObstaculos(capaObstaculos);
+        cantidad = 3;
         rand = new Random();
         contador = 0;
         posibleNuevo=false;
     }
 
-    private void initCreadorObstaculos(ObservableList<Obstaculo> listaObstaculos) {
-        this.listaObstaculos = listaObstaculos;
+    private void initCreadorObstaculos(AnchorPane capaObstaculos) {
+        listaObstaculos = capaObstaculos.getChildren();
     }
 
     public boolean crearObstaculo() {
+        Obstaculo obstaculo;
         if(posibleNuevo) {
-            if (rand.nextBoolean() != false) {
+           // if (rand.nextBoolean() != false) {
+             if(rand.nextInt(100)==2){
                 if (contador < cantidad) {
                     contador++;
-                    listaObstaculos.add(new Obstaculo());
-                    posibleNuevo=false;
+                    obstaculo = new Obstaculo();
+                    obstaculo.setLayoutY(420);
+                    obstaculo.setLayoutX(800);
+                    listaObstaculos.add(obstaculo);
+     //               posibleNuevo=false;
                     return true;
                 }
             }
@@ -46,7 +54,7 @@ public class CreadorObstaculos {
     public void setObstaculo(){
             posibleNuevo=true;
         }
-    public boolean quitarObstaculo() {
+  /*  public boolean quitarObstaculo() {
         if (contador < cantidad && contador != 0) {
             contador--;
             if (contador < 0) {
@@ -57,4 +65,5 @@ public class CreadorObstaculos {
             return false;
         }
     }
+    */
 }

@@ -23,8 +23,8 @@ class ControladorJuego {
     public void initControlador(VistaJuego vistaJuego) {
         sistemaColisiones = new SistemaColisiones(modelo.getObstaculos(), modelo.getJugador());
         movimientoFondo = new MovimientoFondo();
-        creadorObstaculos = new CreadorObstaculos(modelo.getObstaculos());
-        movimientoObstaculos = new MovimientoObstaculos(modelo.getObstaculos(), vistaJuego.getCapaObstaculos());
+        creadorObstaculos = new CreadorObstaculos(vistaJuego.getCapaObstaculos());
+        movimientoObstaculos = new MovimientoObstaculos(vistaJuego.getCapaObstaculos(), modelo);
         controlJugador = new ControlJugador();
         controlJugador.initControlJugador(modelo.getJugador(), vistaJuego.getCapaJugador());
 
@@ -42,8 +42,9 @@ class ControladorJuego {
         @Override
         public void handle(long now) {
             controlJugador.recibirInteraccion();
+            creadorObstaculos.setObstaculo();
             creadorObstaculos.crearObstaculo();
-            //        movimientoObstaculos.moverObstaculos();
+            movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {
                 //Mostrar fin del juego
             }

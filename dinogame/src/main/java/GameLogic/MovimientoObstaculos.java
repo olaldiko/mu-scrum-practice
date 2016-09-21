@@ -4,32 +4,35 @@ import Model.GameModel;
 import Model.Obstaculo;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
 public class MovimientoObstaculos {
-    private ObservableList<Obstaculo> listaObstaculos;
+    private ObservableList<Node> listaObstaculos;
     private AnchorPane capaObstaculos;
     SimpleLongProperty nivel;
     GameModel model;
 
-    public MovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
-        initMovimientoObstaculos(listaObstaculos, capaObstaculos);
+    public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
+        initMovimientoObstaculos(capaObstaculos, model);
     }
 
-    private void initMovimientoObstaculos(ObservableList<Obstaculo> listaObstaculos, AnchorPane capaObstaculos) {
-        this.listaObstaculos = listaObstaculos;
+    private void initMovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
+        listaObstaculos = capaObstaculos.getChildren();
         this.capaObstaculos = capaObstaculos;
+        this.model = model;
     }
 
     public void moverObstaculos() {
         nivel=model.elapsedTimeProperty();
-        for(Obstaculo obs:listaObstaculos){
+        nivel.set(10000);
+        for(Node obs : listaObstaculos){
             obs.setLayoutX(obs.getLayoutX() - nivel.longValue()/2000);
-            if(obs.getLayoutX()<680){
-                listaObstaculos.remove(obs);
+            if(obs.getLayoutX()<-56){
+                obs.setLayoutX(800);
             }
         }
     }
