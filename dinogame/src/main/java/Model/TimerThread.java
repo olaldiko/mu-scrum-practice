@@ -39,4 +39,8 @@ public class TimerThread extends Thread {
     public void stopTimer() {
         stopTimer = true;
     }
+
+    public void resetTimer() {
+        timeMilis.set(0);
+    }
 }

@@ -28,7 +28,6 @@ public class MovimientoObstaculos {
 
     public void moverObstaculos() {
         nivel=model.elapsedTimeProperty();
-        nivel.set(10000);
         for(Node obs : listaObstaculos){
             obs.setLayoutX(obs.getLayoutX() - nivel.longValue()/2000);
             if(obs.getLayoutX()<-56){

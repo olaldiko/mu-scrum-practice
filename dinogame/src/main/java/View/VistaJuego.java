@@ -17,17 +17,20 @@ public class VistaJuego {
     private final AnchorPane capaObstaculos = new AnchorPane();
 
     private final AnchorPane capaJugador = new AnchorPane();
+
+    private AnchorPane capaPuntuacion;
+
     private AnchorPane capaMenu;
+
+    private AnchorPane capaFinalScreen;
 
     public void initVistaJuego() {
         stack.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
         capaFondo.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
         capaObstaculos.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
         capaJugador.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
-        //capaMenu.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
         capaObstaculos.setStyle("-fx-background-color: transparent");
         capaJugador.setStyle("-fx-background-color: transparent");
-
     }
 
     public void mostrarMenu() {
@@ -41,6 +44,7 @@ public class VistaJuego {
         stack.getChildren().add(capaFondo);
         stack.getChildren().add(capaObstaculos);
         stack.getChildren().add(capaJugador);
+        stack.getChildren().add(capaPuntuacion);
     }
 
 
@@ -59,10 +63,18 @@ public class VistaJuego {
 
     public void setCapaMenu(AnchorPane capaMenu) {
         this.capaMenu = capaMenu;
-        stack.getChildren().add(capaMenu);
     }
 
     public AnchorPane getCapaJugador() {
         return capaJugador;
     }
+
+    public void setCapaPuntuacion(AnchorPane capaPuntuacion) {
+        this.capaPuntuacion = capaPuntuacion;
+    }
+
+    public void setCapaFinalScreen(AnchorPane capaFinalScreen) {
+        this.capaFinalScreen = capaFinalScreen;
+    }
+
 }

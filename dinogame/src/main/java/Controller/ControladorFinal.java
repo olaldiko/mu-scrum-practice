@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.GameModel;
 import Model.Principal;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;

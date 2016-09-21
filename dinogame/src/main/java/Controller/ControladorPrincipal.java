@@ -1,9 +1,11 @@
 package Controller;
 
 import GameLogic.GameSound;
+import Model.GameModel;
 import Model.Principal;
 import View.VistaJuego;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -15,32 +17,36 @@ public class ControladorPrincipal {
 
     private final ControladorMenu controladorMenu = new ControladorMenu();
     private final ControladorJuego controladorJuego = new ControladorJuego();
+    private final ControladorPuntuacion controladorPuntuacion = new ControladorPuntuacion();
+    private final ControladorFinal controladorFinal = new ControladorFinal();
     private GameSound gameSound = GameSound.getInstance();
+
+    private GameModel model;
 
     public VistaJuego getVistaJuego() {
         return vistaJuego;
     }
 
-    public void initControlador() {
+    public void initControlador(GameModel model) throws IOException {
+        this.model = model;
+        AnchorPane capaMenu = controladorMenu.initControlador(this);
+        AnchorPane capaPuntuacion = controladorPuntuacion.initControlador(model.scoreProperty());
         vistaJuego.initVistaJuego();
+        vistaJuego.setCapaMenu(capaMenu);
+        vistaJuego.setCapaPuntuacion(capaPuntuacion);
+        controladorJuego.initControlador(model, vistaJuego);
+
     }
 
     public void mostrarJuego() {
-        controladorJuego.initControlador(vistaJuego);
+        model.resetScore();
+        controladorJuego.startGame();
 
     }
 
     public void mostrarMenu() {
-
-        FXMLLoader loader = new FXMLLoader(Principal.class.getResource("/menu.fxml"));
-        loader.setController(controladorMenu);
-        try {
-            vistaJuego.setCapaMenu(loader.load());
-            controladorMenu.setController(this);
-            gameSound.playMenuMusic();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        model.stopGameTimer();
+        vistaJuego.mostrarMenu();
     }
 
 

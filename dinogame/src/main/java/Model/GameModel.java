@@ -41,11 +41,16 @@ public class GameModel {
         return jugador;
     }
 
-    public void initGameTimer() {
+    public void initModel() {
+        initScoreCounter();
+        initGameTimer();
+    }
+
+    private void initGameTimer() {
         elapsedTimeProperty.bind(timerThread.elapsedTimeProperty());
     }
 
-    public void initScoreCounter() {
+    private void initScoreCounter() {
         scoreProperty.bind(
                 elapsedTimeProperty.multiply(SCORE_TIME_MULTIPLIER)
                         .add(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER)));
@@ -55,10 +60,15 @@ public class GameModel {
         return elapsedTimeProperty;
     }
 
+    public SimpleIntegerProperty scoreProperty() {
+        return scoreProperty;
+    }
+
     public void resetScore() {
-        elapsedTimeProperty.set(0);
+        timerThread.resetTimer();
         jumpedObstaclesProperty.set(0);
     }
+
 
     public void startGameTimer() {
         timerThread.start();
@@ -67,6 +77,4 @@ public class GameModel {
     public void stopGameTimer() {
         timerThread.stopTimer();
     }
-
-
 }
