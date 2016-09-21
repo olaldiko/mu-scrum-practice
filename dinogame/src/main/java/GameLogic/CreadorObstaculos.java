@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import java.util.Random;
@@ -50,20 +51,21 @@ public class CreadorObstaculos {
             }
         }
         return false;
+    }
+
+    public void borrarObstaculos() {
+        ArrayList<Node> nodesForRemoval = new ArrayList<>();
+        for (Node n : listaObstaculos) {
+            if (n instanceof Obstaculo) {
+                nodesForRemoval.add(n);
+                contador--;
+            }
         }
+        listaObstaculos.removeAll(nodesForRemoval);
+    }
+
     public void setObstaculo(){
             posibleNuevo=true;
         }
-  /*  public boolean quitarObstaculo() {
-        if (contador < cantidad && contador != 0) {
-            contador--;
-            if (contador < 0) {
-                contador = 0;
-            }
-            return true;
-        }else{
-            return false;
-        }
-    }
-    */
+
 }

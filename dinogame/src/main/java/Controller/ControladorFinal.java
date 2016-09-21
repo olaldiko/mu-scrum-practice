@@ -34,15 +34,14 @@ public class ControladorFinal {
 
 
     public AnchorPane showScreen(ControladorPrincipal principal, SimpleIntegerProperty points) throws IOException {
+        this.principal = principal;
         AnchorPane pane;
         FXMLLoader loader = new FXMLLoader(Principal.class.getResource("/gameEndsScreen.fxml"));
-        this.principal = principal;
-        points.bind(points);
-        points.addListener((o, oldVal, newVal) -> pointsLabel.setText(newVal.toString()));
         loader.setController(this);
         pane = loader.load();
         replayBtn.setOnAction(e -> onReplayPressed());
         backBtn.setOnAction(e -> onBackPressed());
+        pointsLabel.setText(points.getValue().toString());
         return pane;
     }
 

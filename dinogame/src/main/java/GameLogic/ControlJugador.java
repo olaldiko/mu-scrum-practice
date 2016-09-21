@@ -2,6 +2,7 @@ package GameLogic;
 
 import Model.Jugador;
 import Model.Principal;
+import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
@@ -21,7 +22,7 @@ public class ControlJugador {
     private final int XPOS = 50;
     private final int YPOS = 440;
     private final int JUMP_HEIGHT = 200;
-    private final int JUMP_DURATION = 300;
+    private final int JUMP_DURATION = 600;
 
     private final Image bola = new Image(Principal.class.getResource("/bola.png").toString());
     private AnchorPane capaJugador;
@@ -52,7 +53,9 @@ public class ControlJugador {
     }
 
     private void playAnimation() {
-        jump.playFromStart();
+        if(jump.getStatus() != Animation.Status.RUNNING) {
+            jump.playFromStart();
+        }
     }
 
     private void createAnimation() {

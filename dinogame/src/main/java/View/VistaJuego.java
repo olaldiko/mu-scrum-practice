@@ -1,6 +1,7 @@
 package View;
 
 import Model.Principal;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -34,17 +35,29 @@ public class VistaJuego {
     }
 
     public void mostrarMenu() {
-        stack.getChildren().remove(capaFondo);
-        stack.getChildren().remove(capaObstaculos);
-        stack.getChildren().remove(capaJugador);
+        for(Node n : stack.getChildren()) {
+            n.setFocusTraversable(false);
+        }
+        stack.getChildren().clear();
         stack.getChildren().add(capaMenu);
     }
     public void mostrarJuego() {
-        stack.getChildren().remove(capaMenu);
+        for(Node n : stack.getChildren()) {
+            n.setFocusTraversable(false);
+        }
+        stack.getChildren().clear();
         stack.getChildren().add(capaFondo);
         stack.getChildren().add(capaObstaculos);
         stack.getChildren().add(capaJugador);
         stack.getChildren().add(capaPuntuacion);
+    }
+
+    public void mostrarFinal() {
+        for(Node n : stack.getChildren()) {
+            n.setFocusTraversable(false);
+        }
+        stack.getChildren().clear();
+        stack.getChildren().add(capaFinalScreen);
     }
 
 

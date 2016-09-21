@@ -29,11 +29,15 @@ public class MovimientoObstaculos {
     public void moverObstaculos() {
         nivel=model.elapsedTimeProperty();
         for(Node obs : listaObstaculos){
-            obs.setLayoutX(obs.getLayoutX() - nivel.longValue()/2000);
-            if(obs.getLayoutX()<-56){
-                obs.setLayoutX(800);
-                model.obstaculoEsquivado();
+            if (obs instanceof Obstaculo) {
+                obs.setLayoutX(obs.getLayoutX() - nivel.longValue() / 2000);
+                if (obs.getLayoutX() < -56) {
+                    obs.setLayoutX(800);
+                    model.obstaculoEsquivado();
+                }
             }
         }
     }
+
+
 }

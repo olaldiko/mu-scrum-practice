@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.util.Duration;
 
 /**
@@ -24,7 +25,7 @@ public class GameModel {
 
     private final Jugador jugador = new Jugador();
 
-    private final ObservableList<Obstaculo> obstaculos = FXCollections.observableArrayList();
+    private ObservableList<Node> obstaculos;
 
     private SimpleLongProperty elapsedTimeProperty = new SimpleLongProperty();
 
@@ -32,7 +33,9 @@ public class GameModel {
 
     private SimpleIntegerProperty scoreProperty = new SimpleIntegerProperty();
 
-    public ObservableList<Obstaculo> getObstaculos() {
+    public void setObstaculos(ObservableList<Node> obstaculos) { this.obstaculos = obstaculos; }
+
+    public ObservableList<Node> getObstaculos() {
         return obstaculos;
     }
 
@@ -49,6 +52,7 @@ public class GameModel {
 
     private void initGameTimer() {
         elapsedTimeProperty.bind(timerThread.elapsedTimeProperty());
+        timerThread.start();
     }
 
     private void initScoreCounter() {
@@ -68,11 +72,12 @@ public class GameModel {
     public void resetScore() {
         timerThread.resetTimer();
         jumpedObstaclesProperty.set(0);
+
     }
 
 
     public void startGameTimer() {
-        timerThread.start();
+        timerThread.startTimer();
     }
 
     public void stopGameTimer() {

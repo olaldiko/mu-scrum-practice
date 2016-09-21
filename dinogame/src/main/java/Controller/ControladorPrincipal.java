@@ -34,19 +34,29 @@ public class ControladorPrincipal {
         vistaJuego.initVistaJuego();
         vistaJuego.setCapaMenu(capaMenu);
         vistaJuego.setCapaPuntuacion(capaPuntuacion);
-        controladorJuego.initControlador(model, vistaJuego);
+        controladorJuego.initControlador(model, vistaJuego, this);
 
     }
 
     public void mostrarJuego() {
         model.resetScore();
+        vistaJuego.mostrarJuego();
         controladorJuego.startGame();
-
     }
 
     public void mostrarMenu() {
         model.stopGameTimer();
         vistaJuego.mostrarMenu();
+    }
+
+    public void mostrarFinJuego() {
+        controladorJuego.endGame();
+        try {
+            vistaJuego.setCapaFinalScreen(controladorFinal.showScreen(this, model.scoreProperty()));
+            vistaJuego.mostrarFinal();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
