@@ -4,6 +4,8 @@ import Model.Jugador;
 import Model.Obstaculo;
 import javafx.collections.ObservableList;
 
+import java.util.Iterator;
+
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
@@ -22,7 +24,13 @@ public class SistemaColisiones {
     }
 
     public boolean calcularColisiones() {
+        Iterator<Model.Obstaculo> obstaculos = listaObstaculos.iterator();
 
+        while(obstaculos.hasNext()) {
+            if(obstaculos.next().getBoundsInParent().intersects(jugador.getBoundsInParent())){
+                return true;
+            }
+        }
         return false;
     }
 }
