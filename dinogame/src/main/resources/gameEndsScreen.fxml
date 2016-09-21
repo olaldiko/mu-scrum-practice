@@ -16,10 +16,10 @@
             <Image url="@youlose.png" />
          </image>
       </ImageView>
-      <Button id="retro" fx:id="replayBtn" layoutX="307.0" layoutY="418.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="186.0" stylesheets="@endButtonStyle.css" text="Replay">
+      <Button styleClass="retro" fx:id="replayBtn" layoutX="307.0" layoutY="418.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="186.0" stylesheets="@endButtonStyle.css" text="Replay">
 
       </Button>
-      <Button id="retro" fx:id="backBtn" layoutX="307.0" layoutY="498.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="186.0" stylesheets="@endButtonStyle.css" text="Volver">
+      <Button styleClass="retro" fx:id="backBtn" layoutX="307.0" layoutY="498.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="186.0" stylesheets="@endButtonStyle.css" text="Volver">
 
       </Button>
       <Text fill="WHITE" layoutX="176.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nombre:">

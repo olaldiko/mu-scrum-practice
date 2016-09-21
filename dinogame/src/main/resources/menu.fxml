@@ -20,13 +20,13 @@
        </Text>
        <VBox fx:id="vbox" layoutX="272.0" layoutY="238.0" prefHeight="228.0" prefWidth="256.0" spacing="20.0">
         <children>
-            <Button id="retro" fx:id="playButton" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Play">
+            <Button styleClass="retro" fx:id="playButton" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Play">
 
             </Button>
-            <Button id="retro" fx:id="scoresButton" mnemonicParsing="false" onAction="#scoresButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Scores">
+            <Button styleClass="retro" fx:id="scoresButton" mnemonicParsing="false" onAction="#scoresButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Scores">
 
             </Button>
-            <Button id="retro" fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Exit">
+            <Button styleClass="retro" fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="47.0" prefWidth="256.0" stylesheets="@buttonStyle.css" text="Exit">
 
             </Button>
         </children>
