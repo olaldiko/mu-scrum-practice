@@ -2,6 +2,7 @@ package GameLogic;
 
 import Model.Principal;
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -19,7 +20,8 @@ public class MovimientoFondo {
     private AnchorPane capaFondo;
     ObservableList<ImageView> objetosFondo = new SimpleListProperty<>();
     ArrayList<TranslateTransition> transitions = new ArrayList<>();
-
+    GameSound gameSound = GameSound.getInstance();
+    Thread changerThread;
 
     private final Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString(), true);
     private final int MAX_CLOUDS = 10;
@@ -30,9 +32,11 @@ public class MovimientoFondo {
     private final int CLOUD_MARGIN_L = 100;
     private final int SPEED = 5;
     private final int WALL_TRANSITION_DURATION = 8000;
+    private int wall_index = 0;
     private boolean isNight = false;
 
     private final String dayWallpaper = "-fx-background-color:  linear-gradient(#1e5799 0%,#2989d8 50%,#207cca 79%,#9b861f 82%,#93794f 100%)";
+    private final String duskWallpaper = "-fx-background-color:  linear-gradient(to bottom, #721616 0%,#e58a7b 50%,#7db9e8 79%,#a38f58 82%,#8e5c16 100%)";
     private final String nightWallpaper = "-fx-background-color: linear-gradient(#100621 0%,#0f274f 50%,#173f91 79%,#603b0d 82%,#473b26 100%)";
 
 
@@ -75,9 +79,31 @@ public class MovimientoFondo {
         startDelayThread.start();
     }
 
+    public void startWallChanger() {
+        changerThread = new Thread(() -> {
+            while(true) {
+                double rate = 1;
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(() -> changeWallpaper());
+                rate = rate + 0.5;
+                gameSound.setGameMusicRate(rate);
+            }
+        });
+        changerThread.start();
+    }
+
     public void stopAnimation() {
         for (TranslateTransition tr : transitions) {
             tr.stop();
+        }
+        try {
+            changerThread.join(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -86,17 +112,20 @@ public class MovimientoFondo {
     }
 
     public void changeWallpaper() {
-        Timeline timeline = new Timeline();
-        final KeyValue nighKv = new KeyValue(capaFondo.styleProperty(), nightWallpaper, Interpolator.EASE_BOTH);
-        final KeyValue dayKv = new KeyValue(capaFondo.styleProperty(), dayWallpaper, Interpolator.EASE_BOTH);
-        KeyFrame keyFrame;
-        if (!isNight) {
-            keyFrame = new KeyFrame(Duration.millis(WALL_TRANSITION_DURATION), nighKv);
-        } else {
-            keyFrame = new KeyFrame(Duration.millis(WALL_TRANSITION_DURATION), dayKv);
+        switch (wall_index % 3) {
+            case 0:
+                capaFondo.setStyle(dayWallpaper);
+                break;
+            case 1:
+                capaFondo.setStyle(duskWallpaper);
+                break;
+            case 2:
+                capaFondo.setStyle(nightWallpaper);
+                break;
+            default:
+                capaFondo.setStyle(dayWallpaper);
         }
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.play();
+        wall_index++;
     }
 
 
