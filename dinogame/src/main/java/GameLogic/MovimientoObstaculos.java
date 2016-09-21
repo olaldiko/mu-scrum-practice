@@ -32,6 +32,7 @@ public class MovimientoObstaculos {
             obs.setLayoutX(obs.getLayoutX() - nivel.longValue()/2000);
             if(obs.getLayoutX()<-56){
                 obs.setLayoutX(800);
+                model.obstaculoEsquivado();
             }
         }
     }
