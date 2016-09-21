@@ -4,6 +4,7 @@ import Model.Jugador;
 import Model.Obstaculo;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -66,6 +67,10 @@ public class GameModel {
 
     public void stopGameTimer() {
         timerThread.stopTimer();
+    }
+
+    public void obstaculoEsquivado(){
+        jumpedObstaclesProperty.add(1);
     }
 
 
