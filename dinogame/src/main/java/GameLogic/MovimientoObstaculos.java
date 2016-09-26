@@ -51,8 +51,8 @@ public class MovimientoObstaculos {
        for(Node obs : listaObstaculos){
            if (obs instanceof Obstaculo) {
                moverIzq=new TranslateTransition(Duration.millis(nivel.doubleValue()/2000),obs);
-               moverIzq.setFromX(800);
-               moverIzq.setToX(-56);
+               moverIzq.setFromX(-56);
+               moverIzq.setToX(800);
                animacionObstaculo.getChildren().addAll(moverIzq);
                if (obs.getLayoutX() < -56) {
                    model.obstaculoEsquivado();
