@@ -40,7 +40,7 @@ class ControladorJuego {
     public void startGame() {
         movimientoFondo.startAnimation();
         movimientoFondo.startWallChanger();
-        creadorObstaculos.borrarObstaculos();
+       // creadorObstaculos.borrarObstaculos();
         gameSound.playGameMusic();
         timer.start();
         modelo.startGameTimer();
