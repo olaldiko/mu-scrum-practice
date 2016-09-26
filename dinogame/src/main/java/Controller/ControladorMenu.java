@@ -38,7 +38,7 @@ class ControladorMenu {
     private Text copyrightText;
     @FXML
     void exitButtonPressed(ActionEvent event) {
-
+        controller.finalizarJuego();
     }
 
     @FXML

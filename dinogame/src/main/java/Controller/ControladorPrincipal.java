@@ -22,6 +22,10 @@ public class ControladorPrincipal {
     private GameSound gameSound = GameSound.getInstance();
 
     private GameModel model;
+    private Principal principal;
+    public ControladorPrincipal(Principal principal) {
+        this.principal = principal;
+    }
 
     public VistaJuego getVistaJuego() {
         return vistaJuego;
@@ -47,10 +51,12 @@ public class ControladorPrincipal {
     public void mostrarMenu() {
         model.stopGameTimer();
         vistaJuego.mostrarMenu();
+        gameSound.playMenuMusic();
     }
 
     public void mostrarFinJuego() {
         controladorJuego.endGame();
+        gameSound.playDieSound();
         try {
             vistaJuego.setCapaFinalScreen(controladorFinal.showScreen(this, model.scoreProperty()));
             vistaJuego.mostrarFinal();
@@ -59,5 +65,9 @@ public class ControladorPrincipal {
         }
     }
 
+    public void finalizarJuego() {
+        principal.exitGame();
+
+    }
 
 }
