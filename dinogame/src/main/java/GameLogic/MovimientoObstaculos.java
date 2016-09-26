@@ -2,10 +2,13 @@ package GameLogic;
 
 import Model.GameModel;
 import Model.Obstaculo;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 /**
  * Created by Gorka Olalde on 12/9/16.
@@ -15,6 +18,7 @@ public class MovimientoObstaculos {
     private AnchorPane capaObstaculos;
     SimpleLongProperty nivel;
     GameModel model;
+    private SequentialTransition animacionObstaculo = new SequentialTransition();
 
     public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
         initMovimientoObstaculos(capaObstaculos, model);
@@ -26,7 +30,9 @@ public class MovimientoObstaculos {
         this.model = model;
     }
 
+   /*
     public void moverObstaculos() {
+
         nivel=model.elapsedTimeProperty();
         for(Node obs : listaObstaculos){
             if (obs instanceof Obstaculo) {
@@ -38,6 +44,21 @@ public class MovimientoObstaculos {
             }
         }
     }
-
-
+*/
+   public void moverObstaculos() {
+       TranslateTransition moverIzq;
+       nivel=model.elapsedTimeProperty();
+       for(Node obs : listaObstaculos){
+           if (obs instanceof Obstaculo) {
+               moverIzq=new TranslateTransition(Duration.millis(nivel.doubleValue()/2000),obs);
+               moverIzq.setFromX(-56);
+               moverIzq.setToX(800);
+               animacionObstaculo.getChildren().addAll(moverIzq);
+               if (obs.getLayoutX() < -56) {
+                   model.obstaculoEsquivado();
+                   moverIzq.playFromStart();
+               }
+           }
+       }
+   }
 }
