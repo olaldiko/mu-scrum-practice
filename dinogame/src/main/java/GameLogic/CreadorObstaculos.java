@@ -37,7 +37,6 @@ public class CreadorObstaculos {
     public boolean crearObstaculo() {
         Obstaculo obstaculo;
         if(posibleNuevo) {
-           // if (rand.nextBoolean() != false) {
              if(rand.nextInt(100)==2){
                 if (contador < cantidad) {
                     contador++;
@@ -53,6 +52,7 @@ public class CreadorObstaculos {
         return false;
     }
 
+    /*
     public void borrarObstaculos() {
         ArrayList<Node> nodesForRemoval = new ArrayList<>();
         for (Node n : listaObstaculos) {
@@ -63,6 +63,7 @@ public class CreadorObstaculos {
         }
         listaObstaculos.removeAll(nodesForRemoval);
     }
+    */
 
     public void setObstaculo(){
             posibleNuevo=true;
