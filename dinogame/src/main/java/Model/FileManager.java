@@ -46,10 +46,13 @@ public class FileManager {
             }
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
+            int i = 0;
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 bw.write(pair.getKey() + ";" + pair.getValue() + "\n");
                 it.remove();
+                i++;
+                if (i >= 5) break;
             }
             bw.close();
         } catch (IOException e) {
