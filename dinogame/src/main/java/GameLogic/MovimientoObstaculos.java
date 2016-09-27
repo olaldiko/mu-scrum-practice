@@ -3,6 +3,7 @@ package GameLogic;
 import Model.GameModel;
 import Model.Obstaculo;
 import javafx.animation.SequentialTransition;
+import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -22,9 +24,10 @@ public class MovimientoObstaculos {
     SimpleLongProperty nivel;
     SimpleObjectProperty<Duration> duration;
     GameModel model;
-    private SequentialTransition animacionObstaculo = new SequentialTransition();
+   // private SequentialTransition animacionObstaculo = new SequentialTransition();
+   // private SequentialTransition animacionObstaculo[] = new SequentialTransition[5];
     Random rand;
-    TranslateTransition moverIzq[];
+    TranslateTransition moverIzq[]=new TranslateTransition[5];
 
 
     public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
@@ -40,7 +43,7 @@ public class MovimientoObstaculos {
             moverIzq[i] = new TranslateTransition(Duration.millis(10000), listaObstaculos.get(i));
             moverIzq[i].setFromX(0);
             moverIzq[i].setToX(856);
-            animacionObstaculo.getChildren().addAll(moverIzq[i]);
+            //animacionObstaculo.getChildren().addAll(moverIzq[i]);
         }
     }
 
