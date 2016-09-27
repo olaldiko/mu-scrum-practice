@@ -5,6 +5,7 @@ import Model.Obstaculo;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +18,7 @@ public class MovimientoObstaculos {
     private ObservableList<Node> listaObstaculos;
     private AnchorPane capaObstaculos;
     SimpleLongProperty nivel;
+    SimpleObjectProperty<Duration> duration;
     GameModel model;
     private SequentialTransition animacionObstaculo = new SequentialTransition();
 
@@ -53,6 +55,7 @@ public class MovimientoObstaculos {
                moverIzq=new TranslateTransition(Duration.millis(10000),obs);
                moverIzq.setFromX(0);
                moverIzq.setToX(856);
+               moverIzq.durationProperty().bind(duration);
                if(obs.getLayoutX()==800){
                    moverIzq.playFromStart();
                }
