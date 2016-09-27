@@ -49,7 +49,7 @@ public class FileManager {
         }
     }
 
-    public static ArrayList<Puntuacion> shortPuntuacion(ArrayList<Puntuacion> p) {
+    public static ArrayList<Puntuacion> sortPuntuacion(ArrayList<Puntuacion> p) {
         Collections.sort(p, (o1, o2) -> {
             if (o1.puntuacion.get() > o2.puntuacion.get()) {
                 return -1;
