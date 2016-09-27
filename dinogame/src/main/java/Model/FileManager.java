@@ -2,23 +2,27 @@ package Model;
 
 import java.io.*;
 import java.security.Principal;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by urko on 26/09/16.
  */
 public class FileManager {
 
-    public static Map<String, Integer> readFile() {
-        Map<String, Integer> ranking = new HashMap<>();
+    public static ArrayList<Puntuacion> readFile() {
+        ArrayList<Puntuacion> ranking = new ArrayList<>();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(Principal.class.getResource("/ranking.dat").getFile()));
             String line;
             while ((line = br.readLine()) != null) {
                 String [] lines = line.split(";");
-                ranking.put(lines[0], Integer.parseInt(lines[1]));
+                Puntuacion p = new Puntuacion();
+                p.nombre.set(lines[0]);
+                p.puntuacion.set(Integer.parseInt(lines[1]));
+                ranking.add(p);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Archivo no encontrado, se creara al finalizar el programa");
@@ -28,17 +32,7 @@ public class FileManager {
         return ranking;
     }
 
-    public static void writeFile(Map<String, Integer> ranking) {
-        ranking = ranking.entrySet()
-                         .stream()
-                         .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
-                         .collect(Collectors.toMap(
-                                 Map.Entry::getKey,
-                                 Map.Entry::getValue,
-                                 (e1, e2) -> e1,
-                                 LinkedHashMap::new
-                         ));
-        Iterator it = ranking.entrySet().iterator();
+    public static void writeFile(ArrayList<Puntuacion> ranking) {
         try {
             File file = new File(Principal.class.getResource("/ranking.dat").getFile());
             if (!file.exists()) {
@@ -46,18 +40,28 @@ public class FileManager {
             }
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            int i = 0;
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-                bw.write(pair.getKey() + ";" + pair.getValue() + "\n");
-                it.remove();
-                i++;
-                if (i >= 5) break;
+            for (int i = 0; i < 5 || i < ranking.size(); i++) {
+                bw.write(ranking.get(i).nombre.get() + ";" + ranking.get(i).puntuacion.get() + "\n");
             }
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList<Puntuacion> shortPuntuacion(ArrayList<Puntuacion> p) {
+        Collections.sort(p, (o1, o2) -> {
+            if (o1.puntuacion.get() > o2.puntuacion.get()) {
+                return -1;
+            } else if (o1.puntuacion.get() == o2.puntuacion.get()) {
+                return 0;
+            } else {
+                return 1;
+            }
+        });
+        return p;
+    }
+
+
 
 }
