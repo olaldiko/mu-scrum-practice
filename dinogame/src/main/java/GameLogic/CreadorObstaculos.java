@@ -29,10 +29,17 @@ public class CreadorObstaculos {
     }
 
     private void initCreadorObstaculos(AnchorPane capaObstaculos) {
+        Obstaculo obstaculo;
         listaObstaculos = capaObstaculos.getChildren();
+        for(int i=0;i<5;i++){
+            obstaculo = new Obstaculo();
+            obstaculo.setLayoutY(420);
+            obstaculo.setLayoutX(800);
+            listaObstaculos.add(obstaculo);
+        }
     }
 
-    public boolean crearObstaculo() {
+  /*  public boolean crearObstaculo() {
         Obstaculo obstaculo;
         if(posibleNuevo) {
             if (contador < cantidad) {
@@ -47,7 +54,7 @@ public class CreadorObstaculos {
         }
         return false;
     }
-
+*/
     /*
     public void borrarObstaculos() {
         ArrayList<Node> nodesForRemoval = new ArrayList<>();

@@ -2,6 +2,7 @@ package GameLogic;
 
 import Model.GameModel;
 import Model.Obstaculo;
+import javafx.animation.Animation;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
@@ -27,7 +28,7 @@ public class MovimientoObstaculos {
    // private SequentialTransition animacionObstaculo = new SequentialTransition();
    // private SequentialTransition animacionObstaculo[] = new SequentialTransition[5];
     Random rand;
-    TranslateTransition moverIzq[]=new TranslateTransition[5];
+    TranslateTransition moverIzq[];
 
 
     public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
@@ -39,10 +40,11 @@ public class MovimientoObstaculos {
         this.capaObstaculos = capaObstaculos;
         this.model = model;
         this.rand = new Random();
+        this.moverIzq = new TranslateTransition[5];
         for(int i=0;i<5;i++){
             moverIzq[i] = new TranslateTransition(Duration.millis(10000), listaObstaculos.get(i));
             moverIzq[i].setFromX(0);
-            moverIzq[i].setToX(856);
+            moverIzq[i].setToX(-856);
             //animacionObstaculo.getChildren().addAll(moverIzq[i]);
         }
     }
@@ -69,12 +71,12 @@ public class MovimientoObstaculos {
            i++;
            if (obs instanceof Obstaculo) {
                if(rand.nextInt(150)==2) {
-                   if (obs.getLayoutX() == 800) {
+                   if (moverIzq[i].getStatus()==Transition.Status.STOPPED) {
                        moverIzq[i].playFromStart();
                    }
-                   if (obs.getLayoutX() < -56) {
+                   if (obs.getLayoutX() < -856) {
                        model.obstaculoEsquivado();
-                       moverIzq[i].setToX(856);
+                       moverIzq[i].setToX(0);
                    }
                }
            }

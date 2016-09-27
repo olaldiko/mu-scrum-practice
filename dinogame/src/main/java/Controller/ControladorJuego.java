@@ -59,7 +59,7 @@ class ControladorJuego {
         @Override
         public void handle(long now) {
             creadorObstaculos.setObstaculo();
-            creadorObstaculos.crearObstaculo();
+          //  creadorObstaculos.crearObstaculo();
             movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {
                 principal.mostrarFinJuego();
