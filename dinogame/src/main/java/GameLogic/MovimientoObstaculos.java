@@ -50,7 +50,7 @@ public class MovimientoObstaculos {
        nivel=model.elapsedTimeProperty();
        for(Node obs : listaObstaculos){
            if (obs instanceof Obstaculo) {
-               moverIzq=new TranslateTransition(Duration.millis(nivel.doubleValue()/2000),obs);
+               moverIzq=new TranslateTransition(Duration.millis(10000),obs);
                moverIzq.setFromX(0);
                moverIzq.setToX(856);
                if(obs.getLayoutX()==800){
