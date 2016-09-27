@@ -5,6 +5,7 @@ import Model.Obstaculo;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -19,19 +20,28 @@ public class MovimientoObstaculos {
     private ObservableList<Node> listaObstaculos;
     private AnchorPane capaObstaculos;
     SimpleLongProperty nivel;
+    SimpleObjectProperty<Duration> duration;
     GameModel model;
     private SequentialTransition animacionObstaculo = new SequentialTransition();
     Random rand;
+    TranslateTransition moverIzq[];
+
 
     public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
         initMovimientoObstaculos(capaObstaculos, model);
-        rand = new Random();
     }
 
     private void initMovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
         listaObstaculos = capaObstaculos.getChildren();
         this.capaObstaculos = capaObstaculos;
         this.model = model;
+        this.rand = new Random();
+        for(int i=0;i<5;i++){
+            moverIzq[i] = new TranslateTransition(Duration.millis(10000), listaObstaculos.get(i));
+            moverIzq[i].setFromX(0);
+            moverIzq[i].setToX(856);
+            animacionObstaculo.getChildren().addAll(moverIzq[i]);
+        }
     }
 
    /*
@@ -50,21 +60,18 @@ public class MovimientoObstaculos {
     }
 */
    public void moverObstaculos() {
-       TranslateTransition moverIzq;
+       int i=-1;
        nivel=model.elapsedTimeProperty();
        for(Node obs : listaObstaculos){
+           i++;
            if (obs instanceof Obstaculo) {
                if(rand.nextInt(150)==2) {
-                   moverIzq = new TranslateTransition(Duration.millis(10000), obs);
-                   moverIzq.setFromX(0);
-                   moverIzq.setToX(856);
                    if (obs.getLayoutX() == 800) {
-                       moverIzq.playFromStart();
+                       moverIzq[i].playFromStart();
                    }
-                   animacionObstaculo.getChildren().addAll(moverIzq);
                    if (obs.getLayoutX() < -56) {
                        model.obstaculoEsquivado();
-                       moverIzq.playFromStart();
+                       moverIzq[i].setToX(856);
                    }
                }
            }
