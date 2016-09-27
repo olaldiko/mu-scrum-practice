@@ -56,9 +56,7 @@ public class GameModel {
     }
 
     private void initScoreCounter() {
-        scoreProperty.bind(
-                elapsedTimeProperty.multiply(SCORE_TIME_MULTIPLIER)
-                        .add(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER)));
+        scoreProperty.bind((elapsedTimeProperty.multiply(SCORE_TIME_MULTIPLIER).add(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER))));
     }
 
     public SimpleLongProperty elapsedTimeProperty() {

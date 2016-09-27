@@ -58,7 +58,7 @@ class ControladorJuego {
         double playRate = 1.0;
         @Override
         public void handle(long now) {
-            creadorObstaculos.setObstaculo();
+          //  creadorObstaculos.setObstaculo();
           //  creadorObstaculos.crearObstaculo();
             movimientoObstaculos.moverObstaculos();
             if (sistemaColisiones.calcularColisiones()) {

@@ -70,13 +70,10 @@ public class MovimientoObstaculos {
        for(Node obs : listaObstaculos){
            i++;
            if (obs instanceof Obstaculo) {
-               if(rand.nextInt(150)==2) {
+               if(rand.nextInt(2000)==2) {
                    if (moverIzq[i].getStatus()==Transition.Status.STOPPED) {
                        moverIzq[i].playFromStart();
-                   }
-                   if (obs.getLayoutX() < -856) {
                        model.obstaculoEsquivado();
-                       moverIzq[i].setToX(0);
                    }
                }
            }
