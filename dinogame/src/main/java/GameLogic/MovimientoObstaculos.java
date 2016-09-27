@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -24,7 +25,7 @@ public class MovimientoObstaculos {
     SimpleObjectProperty<Duration> duration;
     GameModel model;
    // private SequentialTransition animacionObstaculo = new SequentialTransition();
-    private SequentialTransition animacionObstaculo[] = new SequentialTransition[5];
+   // private SequentialTransition animacionObstaculo[] = new SequentialTransition[5];
     Random rand;
     TranslateTransition moverIzq[]=new TranslateTransition[5];
 
@@ -43,8 +44,6 @@ public class MovimientoObstaculos {
             moverIzq[i].setFromX(0);
             moverIzq[i].setToX(856);
             //animacionObstaculo.getChildren().addAll(moverIzq[i]);
-            animacionObstaculo[i]=new SequentialTransition();
-            animacionObstaculo[i].getChildren().addAll(moverIzq[i]);
         }
     }
 
