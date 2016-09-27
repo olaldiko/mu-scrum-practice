@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="Controller.ControladorRanking" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="250.0" layoutY="11.0" prefHeight="89.0" prefWidth="310.0" text="Top 10 Jugadores" textAlignment="CENTER">
          <textFill>
@@ -32,6 +32,6 @@
           <TableColumn fx:id="scoreCol" editable="false" minWidth="0.0" prefWidth="316.0" sortable="false" text="Puntuacion" />
         </columns>
       </TableView>
-      <Button fx:id="backBtn" layoutX="317.0" layoutY="524.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Volver" />
+      <Button fx:id="backBtn" layoutX="317.0" layoutY="524.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Volver" onAction="#returnButtonPressed"/>
    </children>
 </AnchorPane>

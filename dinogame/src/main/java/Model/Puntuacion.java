@@ -10,6 +10,8 @@ public class Puntuacion implements Comparable<Puntuacion>{
 
     public SimpleIntegerProperty puntuacion = new SimpleIntegerProperty();
 
+    public SimpleStringProperty nombre = new SimpleStringProperty();
+
     public int getPuntuacion() {
         return puntuacion.get();
     }
@@ -21,8 +23,6 @@ public class Puntuacion implements Comparable<Puntuacion>{
     public void setPuntuacion(int puntuacion) {
         this.puntuacion.set(puntuacion);
     }
-
-    public SimpleStringProperty nombre = new SimpleStringProperty();
 
 
     public String getNombre() {
