@@ -16,7 +16,6 @@ import java.util.Random;
  * Created by Gorka Olalde on 12/9/16.
  */
 public class CreadorObstaculos {
-    Random rand;
     int cantidad;
     int contador;
     boolean posibleNuevo;
@@ -25,7 +24,6 @@ public class CreadorObstaculos {
     public CreadorObstaculos(AnchorPane capaObstaculos) {
         initCreadorObstaculos(capaObstaculos);
         cantidad = 3;
-        rand = new Random();
         contador = 0;
         posibleNuevo=false;
     }
@@ -37,16 +35,14 @@ public class CreadorObstaculos {
     public boolean crearObstaculo() {
         Obstaculo obstaculo;
         if(posibleNuevo) {
-             if(rand.nextInt(100)==2){
-                if (contador < cantidad) {
-                    contador++;
-                    obstaculo = new Obstaculo();
-                    obstaculo.setLayoutY(420);
-                    obstaculo.setLayoutX(800);
-                    listaObstaculos.add(obstaculo);
-     //               posibleNuevo=false;
-                    return true;
-                }
+            if (contador < cantidad) {
+                contador++;
+                obstaculo = new Obstaculo();
+                obstaculo.setLayoutY(420);
+                obstaculo.setLayoutX(800);
+                listaObstaculos.add(obstaculo);
+ //               posibleNuevo=false;
+                return true;
             }
         }
         return false;
