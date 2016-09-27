@@ -50,19 +50,18 @@ public class FileManager {
     }
 
     public static ArrayList<Puntuacion> shortPuntuacion(ArrayList<Puntuacion> p) {
-        Collections.sort(p, new Comparator<Puntuacion>() {
-            @Override
-            public int compare(Puntuacion o1, Puntuacion o2) {
-                if (o1.puntuacion.get() > o2.puntuacion.get()) {
-                    return -1;
-                } else if (o1.puntuacion.get() == o2.puntuacion.get()) {
-                    return 0;
-                } else {
-                    return 1;
-                }
+        Collections.sort(p, (o1, o2) -> {
+            if (o1.puntuacion.get() > o2.puntuacion.get()) {
+                return -1;
+            } else if (o1.puntuacion.get() == o2.puntuacion.get()) {
+                return 0;
+            } else {
+                return 1;
             }
         });
         return p;
     }
+
+
 
 }
