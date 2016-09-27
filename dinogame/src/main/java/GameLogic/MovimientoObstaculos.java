@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
@@ -19,9 +21,11 @@ public class MovimientoObstaculos {
     SimpleLongProperty nivel;
     GameModel model;
     private SequentialTransition animacionObstaculo = new SequentialTransition();
+    Random rand;
 
     public MovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
         initMovimientoObstaculos(capaObstaculos, model);
+        rand = new Random();
     }
 
     private void initMovimientoObstaculos(AnchorPane capaObstaculos, GameModel model) {
@@ -50,16 +54,18 @@ public class MovimientoObstaculos {
        nivel=model.elapsedTimeProperty();
        for(Node obs : listaObstaculos){
            if (obs instanceof Obstaculo) {
-               moverIzq=new TranslateTransition(Duration.millis(10000),obs);
-               moverIzq.setFromX(0);
-               moverIzq.setToX(856);
-               if(obs.getLayoutX()==800){
-                   moverIzq.playFromStart();
-               }
-               animacionObstaculo.getChildren().addAll(moverIzq);
-               if (obs.getLayoutX() < -56) {
-                   model.obstaculoEsquivado();
-                   moverIzq.playFromStart();
+               if(rand.nextInt(150)==2) {
+                   moverIzq = new TranslateTransition(Duration.millis(10000), obs);
+                   moverIzq.setFromX(0);
+                   moverIzq.setToX(856);
+                   if (obs.getLayoutX() == 800) {
+                       moverIzq.playFromStart();
+                   }
+                   animacionObstaculo.getChildren().addAll(moverIzq);
+                   if (obs.getLayoutX() < -56) {
+                       model.obstaculoEsquivado();
+                       moverIzq.playFromStart();
+                   }
                }
            }
        }
