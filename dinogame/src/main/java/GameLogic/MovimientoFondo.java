@@ -99,6 +99,7 @@ public class MovimientoFondo {
         transitions.forEach(translateTransition -> translateTransition.jumpTo(Duration.ZERO));
         transitions.forEach(Animation::stop);
         changerThread.interrupt();
+        Platform.runLater(() -> capaFondo.setStyle(dayWallpaper));
     }
 
     private void cargarEstilosFondo() {
