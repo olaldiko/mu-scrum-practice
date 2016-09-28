@@ -1,17 +1,9 @@
 package Model;
 
-import Model.Jugador;
-import Model.Obstaculo;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.util.Duration;
 
 /**
  * Created by Gorka Olalde on 12/9/16.
@@ -21,7 +13,7 @@ public class GameModel {
 
     private final double SCORE_TIME_MULTIPLIER = 0.001;
 
-    private final double SCORE_OBSTACLE_MULTIPLIER = 10;
+    private final double SCORE_OBSTACLE_MULTIPLIER = 10000;
 
     private final Jugador jugador = new Jugador();
 
@@ -56,7 +48,7 @@ public class GameModel {
     }
 
     private void initScoreCounter() {
-        scoreProperty.bind((elapsedTimeProperty.multiply(SCORE_TIME_MULTIPLIER).add(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER))));
+        scoreProperty.bind(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER).add(elapsedTimeProperty).multiply(SCORE_TIME_MULTIPLIER));
     }
 
     public SimpleLongProperty elapsedTimeProperty() {
@@ -83,7 +75,7 @@ public class GameModel {
     }
 
     public void obstaculoEsquivado(){
-        jumpedObstaclesProperty.add(1);
+        jumpedObstaclesProperty.set(jumpedObstaclesProperty.get() + 1);
     }
 
 
