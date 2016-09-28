@@ -1,18 +1,23 @@
 package Model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
+
 import java.io.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  * Created by urko on 26/09/16.
  */
 public class FileManager {
 
-    public static ArrayList<Puntuacion> readFile() {
-        ArrayList<Puntuacion> ranking = new ArrayList<>();
+    public static ObservableList<Puntuacion> readFile() {
+        ObservableList<Puntuacion> ranking = FXCollections.observableArrayList();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(Principal.class.getResource("/ranking.dat").getFile()));
@@ -32,7 +37,7 @@ public class FileManager {
         return ranking;
     }
 
-    public static void writeFile(ArrayList<Puntuacion> ranking) {
+    public static void writeFile(ObservableList<Puntuacion> ranking) {
         try {
             File file = new File(Principal.class.getResource("/ranking.dat").getFile());
             if (!file.exists()) {
@@ -49,17 +54,10 @@ public class FileManager {
         }
     }
 
-    public static ArrayList<Puntuacion> shortPuntuacion(ArrayList<Puntuacion> p) {
-        Collections.sort(p, (o1, o2) -> {
-            if (o1.puntuacion.get() > o2.puntuacion.get()) {
-                return -1;
-            } else if (o1.puntuacion.get() == o2.puntuacion.get()) {
-                return 0;
-            } else {
-                return 1;
-            }
-        });
-        return p;
+    public static ObservableList<Puntuacion> sortPuntuacion(ObservableList<Puntuacion> ranking) {
+        return ranking.stream()
+                .sorted()
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
 
