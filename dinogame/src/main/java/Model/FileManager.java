@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
-import java.security.Principal;
 import java.util.stream.Collectors;
 
 /**
@@ -14,9 +13,10 @@ public class FileManager {
 
     public static ObservableList<Puntuacion> readFile() {
         ObservableList<Puntuacion> ranking = FXCollections.observableArrayList();
+        File file = new File("ranking.dat");
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader(Principal.class.getResource("/ranking.dat").getFile()));
+            br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
                 String [] lines = line.split(";");
@@ -25,28 +25,54 @@ public class FileManager {
                 p.score.set(Integer.parseInt(lines[1]));
                 ranking.add(p);
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException | NullPointerException e) {
             System.out.println("Archivo no encontrado, se creara al finalizar el programa");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return ranking;
     }
 
     public static void writeFile(ObservableList<Puntuacion> ranking) {
-        try {
-            File file = new File(Principal.class.getResource("/ranking.dat").getFile());
-            if (!file.exists()) {
-                file.createNewFile();
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File file = new File("ranking.dat");
+        if (ranking.size() > 0) {
+            try {
+                if (!file.isFile()) {
+                    file.createNewFile();
+                }
+                fw = new FileWriter(file);
+                bw = new BufferedWriter(fw);
+                ranking = ranking.sorted();
+                for (int i = (ranking.size() - 1); i >= (ranking.size() - 5) && i >= 0; i--) {
+                    bw.write(ranking.get(i).nombre.get() + ";" + ranking.get(i).score.get() + "\n");
+                }
+                bw.close();
+            } catch (IOException | NullPointerException e) {
+                e.printStackTrace();
+            } finally {
+                if (bw != null) {
+                    try {
+                        bw.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (fw != null) {
+                    try {
+                        fw.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (int i = 0; i < 5 || i < ranking.size(); i++) {
-                bw.write(ranking.get(i).nombre.get() + ";" + ranking.get(i).score.get() + "\n");
-            }
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

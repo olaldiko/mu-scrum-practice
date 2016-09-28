@@ -24,14 +24,15 @@ public class GameModel {
     private SimpleIntegerProperty jumpedObstaclesProperty = new SimpleIntegerProperty();
 
     private SimpleIntegerProperty scoreProperty = new SimpleIntegerProperty();
-
-    public void setObstaculos(ObservableList<Node> obstaculos) { this.obstaculos = obstaculos; }
+    private TimerThread timerThread = new TimerThread();
 
     public ObservableList<Node> getObstaculos() {
         return obstaculos;
     }
 
-    private TimerThread timerThread = new TimerThread();
+    public void setObstaculos(ObservableList<Node> obstaculos) {
+        this.obstaculos = obstaculos;
+    }
 
     public Jugador getJugador() {
         return jugador;
@@ -62,7 +63,6 @@ public class GameModel {
     public void resetScore() {
         timerThread.resetTimer();
         jumpedObstaclesProperty.set(0);
-
     }
 
 
