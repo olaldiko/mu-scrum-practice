@@ -70,4 +70,11 @@ public class ControladorPrincipal {
 
     }
 
+    public void mostrarRanking() {
+        ControladorRanking ranking = new ControladorRanking(this);
+        vistaJuego.setCapaRanking(ranking.initRanking());
+        vistaJuego.mostrarRanking();
+    }
+
+
 }

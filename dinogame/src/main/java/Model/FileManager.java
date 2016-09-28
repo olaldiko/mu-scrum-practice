@@ -2,13 +2,9 @@ package Model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.io.*;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +22,7 @@ public class FileManager {
                 String [] lines = line.split(";");
                 Puntuacion p = new Puntuacion();
                 p.nombre.set(lines[0]);
-                p.puntuacion.set(Integer.parseInt(lines[1]));
+                p.score.set(Integer.parseInt(lines[1]));
                 ranking.add(p);
             }
         } catch (FileNotFoundException e) {
@@ -46,7 +42,7 @@ public class FileManager {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < 5 || i < ranking.size(); i++) {
-                bw.write(ranking.get(i).nombre.get() + ";" + ranking.get(i).puntuacion.get() + "\n");
+                bw.write(ranking.get(i).nombre.get() + ";" + ranking.get(i).score.get() + "\n");
             }
             bw.close();
         } catch (IOException e) {

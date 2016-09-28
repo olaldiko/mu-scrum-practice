@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="Controller.ControladorRanking" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="250.0" layoutY="11.0" prefHeight="89.0" prefWidth="310.0" text="Top 10 Jugadores" textAlignment="CENTER">
          <textFill>
@@ -21,17 +21,17 @@
                   <Stop color="WHITE" offset="1.0" />
                </stops>
             </LinearGradient>
-         </textFill>
+         </textFill>ß
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <TableView fx:id="scoreTable" layoutX="83.0" layoutY="121.0" prefHeight="386.0" prefWidth="634.0" stylesheets="@buttonStyle.css">
         <columns>
-          <TableColumn fx:id="nameCol" editable="false" prefWidth="317.0" resizable="false" sortable="false" text="Nombre" />
-          <TableColumn fx:id="scoreCol" editable="false" minWidth="0.0" prefWidth="316.0" sortable="false" text="Puntuacion" />
+          <TableColumn fx:id="nameCol" editable="false" prefWidth="317.0" resizable="false" text="Nombre" />
+          <TableColumn fx:id="scoreCol" editable="false" minWidth="0.0" prefWidth="316.0" sortType="DESCENDING" sortable="true" text="Puntuacion" />
         </columns>
       </TableView>
-      <Button fx:id="backBtn" layoutX="317.0" layoutY="524.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Volver" onAction="#returnButtonPressed"/>
+      <Button fx:id="backBtn" layoutX="317.0" layoutY="524.0" mnemonicParsing="false" onAction="#returnButtonPressed" prefHeight="40.0" prefWidth="166.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Volver" />
    </children>
 </AnchorPane>

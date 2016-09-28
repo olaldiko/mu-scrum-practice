@@ -8,20 +8,20 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Puntuacion implements Comparable<Puntuacion>{
 
-    public SimpleIntegerProperty puntuacion = new SimpleIntegerProperty();
+    public SimpleIntegerProperty score = new SimpleIntegerProperty();
 
     public SimpleStringProperty nombre = new SimpleStringProperty();
 
-    public int getPuntuacion() {
-        return puntuacion.get();
+    public int getScore() {
+        return score.get();
     }
 
-    public SimpleIntegerProperty puntuacionProperty() {
-        return puntuacion;
+    public SimpleIntegerProperty scoreProperty() {
+        return score;
     }
 
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion.set(puntuacion);
+    public void setScore(int score) {
+        this.score.set(score);
     }
 
 
@@ -39,9 +39,9 @@ public class Puntuacion implements Comparable<Puntuacion>{
 
     @Override
     public int compareTo(Puntuacion p) {
-        if (puntuacion.get() < p.getPuntuacion()) {
+        if (score.get() < p.getScore()) {
             return -1;
-        } else if (puntuacion.get() == p.getPuntuacion()) {
+        } else if (score.get() == p.getScore()) {
             return 0;
         } else {
             return 1;

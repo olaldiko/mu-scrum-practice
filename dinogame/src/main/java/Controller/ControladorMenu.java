@@ -49,7 +49,7 @@ class ControladorMenu {
 
     @FXML
     void scoresButtonPressed(ActionEvent event) {
-
+        controller.mostrarRanking();
     }
 
     public AnchorPane initControlador(ControladorPrincipal controller) throws IOException {

@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import sun.plugin.javascript.navig.Anchor;
 
 /**
  * Created by Gorka Olalde on 12/9/16.
@@ -19,11 +20,14 @@ public class VistaJuego {
 
     private final AnchorPane capaJugador = new AnchorPane();
 
+
     private AnchorPane capaPuntuacion;
 
     private AnchorPane capaMenu;
 
     private AnchorPane capaFinalScreen;
+
+    private AnchorPane capaRanking;
 
     public void initVistaJuego() {
         stack.setPrefSize(Principal.WIDTH, Principal.HEIGHT);
@@ -60,6 +64,15 @@ public class VistaJuego {
         stack.getChildren().add(capaFinalScreen);
     }
 
+    public void mostrarRanking() {
+        for(Node n : stack.getChildren()) {
+            n.setFocusTraversable(false);
+        }
+        stack.getChildren().clear();
+        stack.getChildren().add(capaRanking);
+
+    }
+
 
     public Parent getRootPane() {
         return stack;
@@ -89,5 +102,7 @@ public class VistaJuego {
     public void setCapaFinalScreen(AnchorPane capaFinalScreen) {
         this.capaFinalScreen = capaFinalScreen;
     }
+
+    public void setCapaRanking(AnchorPane capaRanking) { this.capaRanking = capaRanking; }
 
 }
