@@ -27,39 +27,10 @@ public class CreadorObstaculos {
         for(int i=0;i<5;i++){
             obstaculo = new Obstaculo();
             obstaculo.setLayoutY(420);
-            obstaculo.setLayoutX(800);
+            obstaculo.setLayoutX(860);
             listaObstaculos.add(obstaculo);
         }
     }
-
-  /*  public boolean crearObstaculo() {
-        Obstaculo obstaculo;
-        if(posibleNuevo) {
-            if (contador < cantidad) {
-                contador++;
-                obstaculo = new Obstaculo();
-                obstaculo.setLayoutY(420);
-                obstaculo.setLayoutX(800);
-                listaObstaculos.add(obstaculo);
- //               posibleNuevo=false;
-                return true;
-            }
-        }
-        return false;
-    }
-*/
-    /*
-    public void borrarObstaculos() {
-        ArrayList<Node> nodesForRemoval = new ArrayList<>();
-        for (Node n : listaObstaculos) {
-            if (n instanceof Obstaculo) {
-                nodesForRemoval.add(n);
-                contador--;
-            }
-        }
-        listaObstaculos.removeAll(nodesForRemoval);
-    }
-    */
 
     public void setObstaculo(){
             posibleNuevo=true;

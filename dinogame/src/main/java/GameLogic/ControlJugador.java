@@ -18,16 +18,18 @@ public class ControlJugador {
     private final Image bola = new Image(Principal.class.getResource("/bola.png").toString());
     private final GameSound gameSound = GameSound.getInstance();
     private final SequentialTransition jump = new SequentialTransition();
+    private final int JUMP_DURATION = 600;
     private Jugador jugador;
     private double contadorSup = 1;
     private double contadorInf = 30;
     private boolean animacion;
+    private TranslateTransition jumpUp;
+    private TranslateTransition jumpDown;
 
     public void initControlJugador(Jugador jugador, AnchorPane capaJugador) {
-        AnchorPane capaJugador1 = capaJugador;
         setJugador(jugador);
         jugador.setImage(bola);
-        int XPOS = 50;
+        int XPOS = 70;
         jugador.setLayoutX(XPOS);
         int YPOS = 440;
         jugador.setLayoutY(YPOS);
@@ -42,7 +44,6 @@ public class ControlJugador {
         this.jugador.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 animacion = true;
-                gameSound.playJumpSound();
                 playAnimation();
             }
         });
@@ -51,11 +52,12 @@ public class ControlJugador {
     private void playAnimation() {
         if(jump.getStatus() != Animation.Status.RUNNING) {
             jump.playFromStart();
+            gameSound.playJumpSound();
         }
     }
 
     private void createAnimation() {
-        int JUMP_DURATION = 700;
+
         TranslateTransition jumpUp = new TranslateTransition(Duration.millis(JUMP_DURATION), jugador);
         TranslateTransition jumpDown = new TranslateTransition(Duration.millis(JUMP_DURATION), jugador);
         jumpUp.setFromY(0);

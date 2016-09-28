@@ -4,6 +4,7 @@ import Model.Principal;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -37,6 +38,7 @@ public class MovimientoFondo {
     private Thread changerThread;
     private int wall_index = 0;
     private boolean isNight = false;
+    private DoubleProperty musicRate;
 
     public void initFondo(AnchorPane capaFondo) {
         this.capaFondo = capaFondo;
@@ -62,6 +64,9 @@ public class MovimientoFondo {
     }
 
     public void startAnimation() {
+        musicRate = gameSound.gameMusicRateProperty();
+        musicRate.set(1.0);
+        wall_index = 0;
         Thread startDelayThread = new Thread(() -> {
             for (TranslateTransition tr : transitions) {
                 tr.playFromStart();
@@ -78,27 +83,22 @@ public class MovimientoFondo {
     public void startWallChanger() {
         changerThread = new Thread(() -> {
             while(true) {
-                double rate = 1;
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    break;
                 }
                 Platform.runLater(this::changeWallpaper);
-                rate = rate + 0.5;
-                gameSound.setGameMusicRate(rate);
+                musicRate.set(musicRate.get() + 0.2);
             }
         });
         changerThread.start();
     }
 
     public void stopAnimation() {
+        transitions.forEach(translateTransition -> translateTransition.jumpTo(Duration.ZERO));
         transitions.forEach(Animation::stop);
-        try {
-            changerThread.join(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        changerThread.interrupt();
     }
 
     private void cargarEstilosFondo() {

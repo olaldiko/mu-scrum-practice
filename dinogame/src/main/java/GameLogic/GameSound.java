@@ -1,6 +1,7 @@
 package GameLogic;
 
 import Model.Principal;
+import javafx.beans.property.DoubleProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -67,6 +68,10 @@ public class GameSound {
 
     public void playDieSound() {
         dieSound.play();
+    }
+
+    public DoubleProperty gameMusicRateProperty() {
+        return gameMusic.rateProperty();
     }
 
 }

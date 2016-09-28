@@ -60,6 +60,7 @@ class ControladorJuego {
         gameSound.stopGameMusic();
         timer.stop();
         modelo.stopGameTimer();
+        movimientoObstaculos.stopMovimientoObstaculos();
 
     }
 
