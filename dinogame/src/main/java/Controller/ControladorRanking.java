@@ -3,8 +3,6 @@ package Controller;
 import Model.FileManager;
 import Model.Principal;
 import Model.Puntuacion;
-import javafx.beans.binding.StringBinding;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,28 +13,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Gorka Olalde on 27/9/16.
  */
-public class ControladorRanking {
+class ControladorRanking {
 
+    private final ControladorPrincipal principal;
     @FXML
     private TableView<Puntuacion> scoreTable;
-
     @FXML
     private TableColumn<Puntuacion, String> nameCol;
-
     @FXML
     private TableColumn<Puntuacion, Integer> scoreCol;
-
     @FXML
     private Button backBtn;
-
-    ControladorPrincipal principal;
-
-    ObservableList<Puntuacion> tableModel;
+    private ObservableList<Puntuacion> tableModel;
 
     public ControladorRanking(ControladorPrincipal principal) {
         this.principal = principal;

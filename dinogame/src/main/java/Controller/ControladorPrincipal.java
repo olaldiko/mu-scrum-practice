@@ -4,7 +4,6 @@ import GameLogic.GameSound;
 import Model.GameModel;
 import Model.Principal;
 import View.VistaJuego;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -19,10 +18,9 @@ public class ControladorPrincipal {
     private final ControladorJuego controladorJuego = new ControladorJuego();
     private final ControladorPuntuacion controladorPuntuacion = new ControladorPuntuacion();
     private final ControladorFinal controladorFinal = new ControladorFinal();
-    private GameSound gameSound = GameSound.getInstance();
-
+    private final GameSound gameSound = GameSound.getInstance();
+    private final Principal principal;
     private GameModel model;
-    private Principal principal;
     public ControladorPrincipal(Principal principal) {
         this.principal = principal;
     }

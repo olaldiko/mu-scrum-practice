@@ -8,39 +8,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id="mainAnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="159.0" fitWidth="780.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Pantalla_Instrucciones.png" />
-         </image>
-         <effect>
-            <Reflection />
-         </effect>
-      </ImageView>
-       <Text fx:id="copyrightText" fill="#c54e2c" layoutX="295.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© MORDORSOFT 2016" wrappingWidth="210.13671875">
-           <font>
-               <Font name="Symbol" size="18.0" />
-           </font>
-       </Text>
-       <Text fx:id="titleText" fill="#c54e2c" layoutX="131.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DINOGAME" textAlignment="CENTER" wrappingWidth="537.13671875">
-           <font>
-               <Font name="Arial" size="95.0" />
-           </font>
-       </Text>
-       <VBox fx:id="vbox" layoutX="272.0" layoutY="300.0" prefHeight="228.0" prefWidth="256.0" spacing="20.0">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainAnchorPane" minHeight="600.0" minWidth="800.0"
+            prefHeight="600.0"
+            prefWidth="800.0" style="-fx-background-color: #000000;"
+            xmlns="http://javafx.com/javafx/8.0.65">
+    <ImageView fitHeight="159.0" fitWidth="780.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@Pantalla_Instrucciones.png"/>
+        </image>
+        <effect>
+            <Reflection/>
+        </effect>
+    </ImageView>
+    <Text fx:id="copyrightText" fill="#c54e2c" layoutX="295.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="© MORDORSOFT 2016" wrappingWidth="210.13671875">
+        <font>
+            <Font name="Symbol" size="18.0"/>
+        </font>
+    </Text>
+    <Text fx:id="titleText" fill="#c54e2c" layoutX="131.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="DINOGAME" textAlignment="CENTER" wrappingWidth="537.13671875">
+        <font>
+            <Font name="Arial" size="95.0"/>
+        </font>
+    </Text>
+    <VBox fx:id="vbox" layoutX="272.0" layoutY="300.0" prefHeight="228.0" prefWidth="256.0" spacing="20.0">
         <children>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="47.0" prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Play">
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonPressed" prefHeight="47.0"
+                    prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Play">
 
             </Button>
-            <Button fx:id="scoresButton" mnemonicParsing="false" onAction="#scoresButtonPressed" prefHeight="47.0" prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Scores">
+            <Button fx:id="scoresButton" mnemonicParsing="false" onAction="#scoresButtonPressed" prefHeight="47.0"
+                    prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Scores">
 
             </Button>
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="47.0" prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Exit">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="47.0"
+                    prefWidth="256.0" styleClass="retro" stylesheets="@buttonStyle.css" text="Exit">
 
             </Button>
         </children>
-      </VBox>
-   </children>
+    </VBox>
 </AnchorPane>

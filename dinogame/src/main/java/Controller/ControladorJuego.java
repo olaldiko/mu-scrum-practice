@@ -10,16 +10,26 @@ import javafx.animation.AnimationTimer;
  */
 class ControladorJuego {
 
+    private final GameSound gameSound = GameSound.getInstance();
     private GameModel modelo;
-    VistaJuego vistaJuego;
-    ControladorPrincipal principal;
-    GameSound gameSound = GameSound.getInstance();
-
+    private VistaJuego vistaJuego;
+    private ControladorPrincipal principal;
     private SistemaColisiones sistemaColisiones;
     private MovimientoFondo movimientoFondo;
-    private CreadorObstaculos creadorObstaculos;
     private MovimientoObstaculos movimientoObstaculos;
-    private ControlJugador controlJugador;
+    private final AnimationTimer timer = new AnimationTimer() {
+        double playRate = 1.0;
+
+        @Override
+        public void handle(long now) {
+            //  creadorObstaculos.setObstaculo();
+            //  creadorObstaculos.crearObstaculo();
+            movimientoObstaculos.moverObstaculos();
+            if (sistemaColisiones.calcularColisiones()) {
+                principal.mostrarFinJuego();
+            }
+        }
+    };
 
     public void initControlador(GameModel model, VistaJuego vistaJuego, ControladorPrincipal principal) {
         this.modelo = model;
@@ -28,14 +38,13 @@ class ControladorJuego {
         modelo.setObstaculos(vistaJuego.getCapaObstaculos().getChildren());
         sistemaColisiones = new SistemaColisiones(modelo.getObstaculos(), modelo.getJugador());
         movimientoFondo = new MovimientoFondo();
-        creadorObstaculos = new CreadorObstaculos(vistaJuego.getCapaObstaculos());
+        CreadorObstaculos creadorObstaculos = new CreadorObstaculos(vistaJuego.getCapaObstaculos());
         movimientoObstaculos = new MovimientoObstaculos(vistaJuego.getCapaObstaculos(), modelo);
-        controlJugador = new ControlJugador();
+        ControlJugador controlJugador = new ControlJugador();
         controlJugador.initControlJugador(modelo.getJugador(), vistaJuego.getCapaObstaculos());
         movimientoFondo.initFondo(vistaJuego.getCapaFondo());
 
     }
-
 
     public void startGame() {
         movimientoFondo.startAnimation();
@@ -53,18 +62,5 @@ class ControladorJuego {
         modelo.stopGameTimer();
 
     }
-
-    private final AnimationTimer timer = new AnimationTimer() {
-        double playRate = 1.0;
-        @Override
-        public void handle(long now) {
-          //  creadorObstaculos.setObstaculo();
-          //  creadorObstaculos.crearObstaculo();
-            movimientoObstaculos.moverObstaculos();
-            if (sistemaColisiones.calcularColisiones()) {
-                principal.mostrarFinJuego();
-            }
-        }
-    };
 
 }

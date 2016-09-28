@@ -1,6 +1,5 @@
 package Model;
 
-import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 
 import java.util.concurrent.locks.Condition;
@@ -10,18 +9,14 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by Gorka Olalde on 19/9/16.
  */
-public class TimerThread extends Thread {
+class TimerThread extends Thread {
 
     private final int REFRESH_INTERVAL = 100;
-
-    private volatile boolean stopTimer = true;
-
-    private long startTimeMilis;
-
     private final SimpleLongProperty timeMilis = new SimpleLongProperty();
-
-    Lock candado = new ReentrantLock();
-    Condition wait = candado.newCondition();
+    private final Lock candado = new ReentrantLock();
+    private final Condition wait = candado.newCondition();
+    private volatile boolean stopTimer = true;
+    private long startTimeMilis;
 
     public TimerThread() {
         this.setName("TimerThread");

@@ -17,10 +17,8 @@ import java.io.IOException;
  */
 class ControladorMenu {
 
+    private final GameSound gameSound = GameSound.getInstance();
     private ControladorPrincipal controller;
-
-    private GameSound gameSound = GameSound.getInstance();
-
     @FXML
     private AnchorPane mainAnchorPane;
 

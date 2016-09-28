@@ -3,7 +3,6 @@ package GameLogic;
 import Model.Principal;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 /**
  * Created by Gorka Olalde on 20/9/16.
@@ -27,7 +26,7 @@ public class GameSound {
         menuMusic.setCycleCount(MediaPlayer.INDEFINITE);
         gameMusic.setCycleCount(MediaPlayer.INDEFINITE);
 
-        jumpSound.setOnEndOfMedia(() -> jumpSound.stop());
+        jumpSound.setOnEndOfMedia(jumpSound::stop);
 
     }
 

@@ -29,9 +29,7 @@ public class Principal extends Application{
         controller.initControlador(model);
         controller.mostrarMenu();
         primaryStage.show();
-        primaryStage.setOnCloseRequest(e -> {
-            exitGame();
-        });
+        primaryStage.setOnCloseRequest(e -> exitGame());
     }
 
     public void exitGame() {

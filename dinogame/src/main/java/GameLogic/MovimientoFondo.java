@@ -1,7 +1,8 @@
 package GameLogic;
 
 import Model.Principal;
-import javafx.animation.*;
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
@@ -17,12 +18,8 @@ import java.util.ArrayList;
  */
 public class MovimientoFondo {
 
-    private AnchorPane capaFondo;
-    ObservableList<ImageView> objetosFondo = new SimpleListProperty<>();
-    ArrayList<TranslateTransition> transitions = new ArrayList<>();
-    GameSound gameSound = GameSound.getInstance();
-    Thread changerThread;
-
+    private final ArrayList<TranslateTransition> transitions = new ArrayList<>();
+    private final GameSound gameSound = GameSound.getInstance();
     private final Image cloud = new Image(Principal.class.getResource("/SingleCloud.png").toString(), true);
     private final int MAX_CLOUDS = 10;
     private final int DEFAULT_TRANSITION = 4000;
@@ -32,15 +29,14 @@ public class MovimientoFondo {
     private final int CLOUD_MARGIN_L = 100;
     private final int SPEED = 5;
     private final int WALL_TRANSITION_DURATION = 8000;
-    private int wall_index = 0;
-    private boolean isNight = false;
-
     private final String dayWallpaper = "-fx-background-color:  linear-gradient(#1e5799 0%,#2989d8 50%,#207cca 79%,#9b861f 82%,#93794f 100%)";
     private final String duskWallpaper = "-fx-background-color:  linear-gradient(to bottom, #721616 0%,#e58a7b 50%,#7db9e8 79%,#a38f58 82%,#8e5c16 100%)";
     private final String nightWallpaper = "-fx-background-color: linear-gradient(#100621 0%,#0f274f 50%,#173f91 79%,#603b0d 82%,#473b26 100%)";
-
-
-
+    ObservableList<ImageView> objetosFondo = new SimpleListProperty<>();
+    private AnchorPane capaFondo;
+    private Thread changerThread;
+    private int wall_index = 0;
+    private boolean isNight = false;
 
     public void initFondo(AnchorPane capaFondo) {
         this.capaFondo = capaFondo;
@@ -88,7 +84,7 @@ public class MovimientoFondo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Platform.runLater(() -> changeWallpaper());
+                Platform.runLater(this::changeWallpaper);
                 rate = rate + 0.5;
                 gameSound.setGameMusicRate(rate);
             }
@@ -97,9 +93,7 @@ public class MovimientoFondo {
     }
 
     public void stopAnimation() {
-        for (TranslateTransition tr : transitions) {
-            tr.stop();
-        }
+        transitions.forEach(Animation::stop);
         try {
             changerThread.join(10);
         } catch (InterruptedException e) {
@@ -111,7 +105,7 @@ public class MovimientoFondo {
         capaFondo.setStyle(dayWallpaper);
     }
 
-    public void changeWallpaper() {
+    private void changeWallpaper() {
         switch (wall_index % 3) {
             case 0:
                 capaFondo.setStyle(dayWallpaper);

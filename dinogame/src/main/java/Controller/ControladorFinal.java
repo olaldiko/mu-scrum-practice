@@ -17,18 +17,24 @@ import java.io.IOException;
 /**
  * Created by Gorka Olalde on 21/9/16.
  */
-public class ControladorFinal {
+class ControladorFinal {
 
     @FXML
+    private
     Label enterNameLabel;
     @FXML
+    private
     TextField nameTextField;
     @FXML
+    private
     Label pointsLabel;
     @FXML
+    private
     Button replayBtn;
     @FXML
+    private
     Button backBtn;
+
     private ControladorPrincipal principal;
     private SimpleIntegerProperty points = new SimpleIntegerProperty();
     private ObservableList<Puntuacion> ranking;
@@ -48,7 +54,7 @@ public class ControladorFinal {
         return pane;
     }
 
-    public void checkForHighScore() {
+    private void checkForHighScore() {
         ranking = FileManager.readFile();
         if (ranking.size() == 0) {
             isHighScore = true;
@@ -63,7 +69,7 @@ public class ControladorFinal {
         }
     }
 
-    public void storeScore() {
+    private void storeScore() {
         Puntuacion p;
         if (isHighScore) {
             p = new Puntuacion();
@@ -74,12 +80,12 @@ public class ControladorFinal {
         }
     }
 
-    public void onBackPressed() {
+    private void onBackPressed() {
         storeScore();
         principal.mostrarMenu();
     }
 
-    public void onReplayPressed() {
+    private void onReplayPressed() {
         storeScore();
         principal.mostrarJuego();
     }

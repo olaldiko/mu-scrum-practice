@@ -11,20 +11,12 @@ import javafx.scene.Node;
 public class GameModel {
 
 
-    private final double SCORE_TIME_MULTIPLIER = 0.001;
-
-    private final double SCORE_OBSTACLE_MULTIPLIER = 10000;
-
     private final Jugador jugador = new Jugador();
-
+    private final SimpleLongProperty elapsedTimeProperty = new SimpleLongProperty();
+    private final SimpleIntegerProperty jumpedObstaclesProperty = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty scoreProperty = new SimpleIntegerProperty();
+    private final TimerThread timerThread = new TimerThread();
     private ObservableList<Node> obstaculos;
-
-    private SimpleLongProperty elapsedTimeProperty = new SimpleLongProperty();
-
-    private SimpleIntegerProperty jumpedObstaclesProperty = new SimpleIntegerProperty();
-
-    private SimpleIntegerProperty scoreProperty = new SimpleIntegerProperty();
-    private TimerThread timerThread = new TimerThread();
 
     public ObservableList<Node> getObstaculos() {
         return obstaculos;
@@ -49,6 +41,8 @@ public class GameModel {
     }
 
     private void initScoreCounter() {
+        double SCORE_OBSTACLE_MULTIPLIER = 10000;
+        double SCORE_TIME_MULTIPLIER = 0.001;
         scoreProperty.bind(jumpedObstaclesProperty.multiply(SCORE_OBSTACLE_MULTIPLIER).add(elapsedTimeProperty).multiply(SCORE_TIME_MULTIPLIER));
     }
 

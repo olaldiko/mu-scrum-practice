@@ -5,8 +5,6 @@ import Model.Obstaculo;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
-import java.util.Iterator;
-
 /**
  * Created by Gorka Olalde on 12/9/16.
  */
