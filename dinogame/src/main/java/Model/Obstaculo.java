@@ -14,9 +14,4 @@ public class Obstaculo extends ImageView{
         this.setImage(image);
         this.setCache(true);
     }
-
-
-
-
-
 }

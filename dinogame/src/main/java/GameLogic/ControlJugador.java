@@ -21,8 +21,8 @@ public class ControlJugador {
     private boolean animacion;
     private final int XPOS = 50;
     private final int YPOS = 440;
-    private final int JUMP_HEIGHT = 200;
-    private final int JUMP_DURATION = 600;
+    private final int JUMP_HEIGHT = 210;
+    private final int JUMP_DURATION = 700;
 
     private final Image bola = new Image(Principal.class.getResource("/bola.png").toString());
     private AnchorPane capaJugador;

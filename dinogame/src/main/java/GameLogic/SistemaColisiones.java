@@ -30,7 +30,6 @@ public class SistemaColisiones {
                 if (n.getBoundsInParent().intersects(jugador.getBoundsInParent())) {
                     return true;
                 }
-                return false;
             }
         }
         return false;
