@@ -25,6 +25,7 @@ public class MovimientoObstaculos {
     SimpleLongProperty nivel;
     SimpleObjectProperty<Duration> duration;
     GameModel model;
+    int contador;
    // private SequentialTransition animacionObstaculo = new SequentialTransition();
    // private SequentialTransition animacionObstaculo[] = new SequentialTransition[5];
     Random rand;
@@ -47,6 +48,7 @@ public class MovimientoObstaculos {
             moverIzq[i].setToX(-856);
             //animacionObstaculo.getChildren().addAll(moverIzq[i]);
         }
+        this.contador=0;
     }
 
    /*
@@ -70,11 +72,14 @@ public class MovimientoObstaculos {
        for(Node obs : listaObstaculos){
            i++;
            if (obs instanceof Obstaculo) {
-               if(rand.nextInt(1200)==1) {
-                   if (moverIzq[i].getStatus()==Transition.Status.STOPPED) {
-                       moverIzq[i].playFromStart();
-                       model.obstaculoEsquivado();
-                   }
+               if (moverIzq[i].getStatus()==Transition.Status.STOPPED) {
+                if(rand.nextInt(1200)==1) {
+                    moverIzq[i].playFromStart();
+                    contador++;
+                    if (contador > 5) {
+                        model.obstaculoEsquivado();
+                    }
+                }
                }
            }
        }
