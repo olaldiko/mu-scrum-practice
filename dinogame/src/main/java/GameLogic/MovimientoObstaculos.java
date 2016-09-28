@@ -70,7 +70,7 @@ public class MovimientoObstaculos {
        for(Node obs : listaObstaculos){
            i++;
            if (obs instanceof Obstaculo) {
-               if(rand.nextInt(1000)==1) {
+               if(rand.nextInt(1200)==1) {
                    if (moverIzq[i].getStatus()==Transition.Status.STOPPED) {
                        moverIzq[i].playFromStart();
                        model.obstaculoEsquivado();
